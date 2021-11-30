@@ -42,6 +42,8 @@ group :development, :test do
   gem 'rack-test', require: 'rack/test'
   gem 'rspec'
   gem 'rspec-core'
+  gem 'debase'
+  gem 'ruby-debug-ide'
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'simplecov'
