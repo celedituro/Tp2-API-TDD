@@ -188,7 +188,6 @@ DEPENDENCIES
   rubocop-rspec
   sequel
   simplecov
-  sinatra (= 2.0.8.1)
 
 BUNDLED WITH
    2.2.31
