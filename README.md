@@ -1,6 +1,13 @@
-# Web Template
+# Salta Api
 
 This is a simple web project based on Padrino.
+
+### Integrantes del grupo
+* [Dituro Celeste](https://gitlab.com/celedituro)
+* [Lopez Victoria Abril](https://gitlab.com/vickyylopezz)
+* [Pfaab Ivan Lautaro](https://gitlab.com/ipfaab)
+* [Villores Alejo](https://gitlab.com/alejovillores)
+
 
 ### Run local with Docker
 
