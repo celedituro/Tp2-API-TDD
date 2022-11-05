@@ -21,7 +21,7 @@ module WebTemplate
     end
 
     get '/' do
-      "It\'s alive! version: #{Version.current}"
+      "It\'s alive! version: #{Version.current} and team: Salta"
     end
 
     post '/reset', :provides => [:js] do
