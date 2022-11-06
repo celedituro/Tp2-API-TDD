@@ -60,6 +60,14 @@ def reset_url
   "#{BASE_URL}/reset"
 end
 
+
+# ---- TP2 ----
+
+def crear_usuario_url
+  "#{BASE_URL}/registrar"
+end
+
+
 After do |_scenario|
   Faraday.post(reset_url)
 end
