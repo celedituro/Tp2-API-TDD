@@ -19,9 +19,8 @@
     Cuando se registra el usuario
     Entonces recibo un código http "400"
 
-  @wip
   Escenario: Registración con campos faltantes
-    Dado que uso el endpoint "/registrar" con los datos "{nombre: Juan, telefono: 3452-1234}" como request body
+    Dado que uso el endpoint "/registrar" con los datos {nombre: "Juan", telefono: "3452-1234"} como request body
     Cuando se registra el usuario
     Entonces recibo un mensaje de error del tipo "Bad Request"
 

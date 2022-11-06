@@ -11,19 +11,20 @@ Entonces(/^recibo un código http "([^"]*)"$/) do |codigo|
   expect(@response.status.to_s).to eq(codigo)
 end
 
-When(/^recibo \{nombre: "([^"]*)", direccion: "([^"]*)", telefono: "([^"]*)"} como response$/) do |nombre, direccion, telefono|
+Cuando(/^recibo \{nombre: "([^"]*)", direccion: "([^"]*)", telefono: "([^"]*)"} como response$/) do |nombre, direccion, telefono|
   datos_response = JSON.parse(@response.body)
   expect(datos_response['nombre']).to eq(nombre)
   expect(datos_response['direccion']).to eq(direccion)
   expect(datos_response['telefono']).to eq(telefono)
 end
 
-When(/^que uso el endpoint "([^"]*)" con los datos \{nombre: "([^"]*)", telefono: "([^"]*)"} como request body$/) do |_comando, nombre, telefono|
+Dado(/^que uso el endpoint "([^"]*)" con los datos \{nombre: "([^"]*)", telefono: "([^"]*)"} como request body$/) do |_comando, nombre, telefono|
   @request = {nombre: nombre, telefono: telefono}.to_json
 end
 
-When(/^recibo un mensaje de error del tipo "([^"]*)"$/) do |_telefono|
-  pending
+Entonces(/^recibo un mensaje de error del tipo "([^"]*)"$/) do |mensaje|
+  datos_response = JSON.parse(@response.body)
+  expect(datos_response['message']).to eq(mensaje)
 end
 
 When(/^que existe un usuario con teléfono "([^"]*)"$/) do |_telefono|
