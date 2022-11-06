@@ -8,6 +8,8 @@ WebTemplate::App.controllers :users, :provides => [:json] do
     #   status 400
     #   {error: e.message}.to_json
     # end
+    usuario = UsuarioCreator.new(usuario_repository).crear_usuario(parametros_usuario[:nombre], parametros_usuario[:direccion], parametros_usuario[:telefono])
     status 201
+    usuario_to_json usuario
   end
 end
