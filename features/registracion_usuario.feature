@@ -14,7 +14,6 @@
     Cuando se registra el usuario
     Entonces recibo {nombre: "Juan", direccion: "Cucha20Cucha", telefono: "3452-1234"} como response
 
-  @wip
   Escenario: Registración con campos faltantes con codigo http
     Dado que uso el endpoint "/registrar" con los datos {nombre: "Juan", telefono: "3452-1234"} como request body
     Cuando se registra el usuario
