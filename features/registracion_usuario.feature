@@ -16,7 +16,7 @@
 
   @wip
   Escenario: Registración con campos faltantes con codigo http
-    Dado que uso el endpoint "/registrar" con los datos "{nombre: Juan, telefono: 3452-1234}" como request body
+    Dado que uso el endpoint "/registrar" con los datos {nombre: "Juan", telefono: "3452-1234"} como request body
     Cuando se registra el usuario
     Entonces recibo un código http "400"
 

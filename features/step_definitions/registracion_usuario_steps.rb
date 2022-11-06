@@ -7,8 +7,8 @@ Cuando(/^se registra el usuario$/) do
   @response = Faraday.post(crear_usuario_url, @request, header)
 end
 
-Entonces(/^recibo un código http "([^"]*)"$/) do |_codigo|
-  expect(@response.status).to eq(201)
+Entonces(/^recibo un código http "([^"]*)"$/) do |codigo|
+  expect(@response.status.to_s).to eq(codigo)
 end
 
 When(/^recibo \{nombre: "([^"]*)", direccion: "([^"]*)", telefono: "([^"]*)"} como response$/) do |nombre, direccion, telefono|
@@ -16,6 +16,10 @@ When(/^recibo \{nombre: "([^"]*)", direccion: "([^"]*)", telefono: "([^"]*)"} co
   expect(datos_response['nombre']).to eq(nombre)
   expect(datos_response['direccion']).to eq(direccion)
   expect(datos_response['telefono']).to eq(telefono)
+end
+
+When(/^que uso el endpoint "([^"]*)" con los datos \{nombre: "([^"]*)", telefono: "([^"]*)"} como request body$/) do |_comando, nombre, telefono|
+  @request = {nombre: nombre, telefono: telefono}.to_json
 end
 
 When(/^recibo un mensaje de error del tipo "([^"]*)"$/) do |_telefono|
