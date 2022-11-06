@@ -1,5 +1,6 @@
 # language: es
-When(/^que uso el endpoint "([^"]*)" con los datos \{nombre: "([^"]*)", direccion: "([^"]*)", telefono: "([^"]*)"} como request body$/) do |_comando, nombre, direccion, telefono|
+Dado(/^que uso el endpoint "([^"]*)" con los datos \{nombre: "([^"]*)", direccion: "([^"]*)", telefono: "([^"]*)"} como request body$/) do |_comando, nombre, direccion, telefono|
+  Persistence::Repositories::UsuarioRepository.new.eliminar_todos
   @request = {nombre: nombre, direccion: direccion, telefono: telefono}.to_json
 end
 
@@ -19,18 +20,23 @@ Cuando(/^recibo \{nombre: "([^"]*)", direccion: "([^"]*)", telefono: "([^"]*)"} 
 end
 
 Dado(/^que uso el endpoint "([^"]*)" con los datos \{nombre: "([^"]*)", telefono: "([^"]*)"} como request body$/) do |_comando, nombre, telefono|
+  Persistence::Repositories::UsuarioRepository.new.eliminar_todos
   @request = {nombre: nombre, telefono: telefono}.to_json
 end
 
 Entonces(/^recibo un mensaje de error del tipo "([^"]*)"$/) do |mensaje|
   datos_response = JSON.parse(@response.body)
+  Persistence::Repositories::UsuarioRepository.new.eliminar_todos
   expect(datos_response['message']).to eq(mensaje)
 end
 
-When(/^que existe un usuario con teléfono "([^"]*)"$/) do |_telefono|
-  pending
+Dado(/^que existe un usuario con teléfono "([^"]*)"$/) do |telefono|
+  Persistence::Repositories::UsuarioRepository.new.eliminar_todos
+  @request = {nombre: 'Juan', direccion: 'Cucha cucha', telefono: telefono}.to_json
+  @response = Faraday.post(crear_usuario_url, @request, header)
 end
 
-When(/^intento el endpoint "([^"]*)" con los datos "([^"]*)" como request body$/) do |_comando, _datos|
-  pending
+Cuando(/^intento el endpoint "([^"]*)" con los datos \{nombre: "([^"]*)", direccion: "([^"]*)", telefono: "([^"]*)"} como request body$/) do |_comando, nombre, direccion, telefono|
+  @request = {nombre: nombre, direccion: direccion, telefono: telefono}.to_json
+  @response = Faraday.post(crear_usuario_url, @request, header)
 end

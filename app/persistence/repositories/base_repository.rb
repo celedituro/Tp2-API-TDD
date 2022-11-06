@@ -4,17 +4,21 @@ module Persistence
   module Repositories
     class BaseRepository
       def guardar(un_registro)
-        if buscar_dataset_por_id(un_registro.telefono).first
-          actualizar(un_registro)
-        else
+        begin
           insertar(un_registro)
+          un_registro
+        rescue UsuarioDuplicado
+          raise UsuarioDuplicado
         end
-        un_registro
       end
 
       def primer_registro
         cargar_coleccion dataset
         cargar_objeto dataset.first
+      end
+
+      def eliminar_todos
+        dataset.delete
       end
 
       class << self

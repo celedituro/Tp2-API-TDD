@@ -7,6 +7,9 @@ WebTemplate::App.controllers :users, :provides => [:json] do
     rescue UsuarioInvalido => e
       status 400
       {message: 'Bad Request'}.to_json
+    rescue UsuarioDuplicado => e
+      status 409
+      {message: 'Conflict'}.to_json
     end
   end
 end
