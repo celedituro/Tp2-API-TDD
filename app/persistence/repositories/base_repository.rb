@@ -4,12 +4,10 @@ module Persistence
   module Repositories
     class BaseRepository
       def guardar(un_registro)
-        begin
-          insertar(un_registro)
-          un_registro
-        rescue UsuarioDuplicado
-          raise UsuarioDuplicado
-        end
+        insertar(un_registro)
+        un_registro
+      rescue UsuarioDuplicado
+        raise UsuarioDuplicado
       end
 
       def primer_registro

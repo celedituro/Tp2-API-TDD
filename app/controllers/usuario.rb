@@ -4,10 +4,10 @@ WebTemplate::App.controllers :users, :provides => [:json] do
       usuario = UsuarioCreator.new(usuario_repository).crear_usuario(parametros_usuario[:nombre], parametros_usuario[:direccion], parametros_usuario[:telefono])
       status 201
       usuario_to_json usuario
-    rescue UsuarioInvalido => e
+    rescue UsuarioInvalido
       status 400
       {message: 'Bad Request'}.to_json
-    rescue UsuarioDuplicado => e
+    rescue UsuarioDuplicado
       status 409
       {message: 'Conflict'}.to_json
     end

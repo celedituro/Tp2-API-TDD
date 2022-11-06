@@ -29,8 +29,7 @@
     Cuando intento el endpoint "/registrar" con los datos {nombre: "Juan", direccion: "Cucha20Cucha", telefono: "5123-1234"} como request body
     Entonces recibo un código http "409"
 
-  @wip
   Escenario: Registración con teléfono existente
     Dado que existe un usuario con teléfono "5123-1234"
-    Cuando intento el endpoint "/registrar" con los datos "{nombre: Juan, direccion: Cucha20Cucha, telefono: 3452-1234}" como request body
+    Cuando intento el endpoint "/registrar" con los datos {nombre: "Juan", direccion: "Cucha20Cucha", telefono: "5123-1234"} como request body
     Entonces recibo un mensaje de error del tipo "Conflict"

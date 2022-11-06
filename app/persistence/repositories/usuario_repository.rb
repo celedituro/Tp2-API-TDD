@@ -7,13 +7,11 @@ module Persistence
       protected
 
       def insertar(un_registro)
-        begin
-          id = dataset.insert(insertar_changeset(un_registro))
-          un_registro.telefono = id
-          un_registro
-        rescue Sequel::UniqueConstraintViolation
-          raise UsuarioDuplicado
-        end
+        id = dataset.insert(insertar_changeset(un_registro))
+        un_registro.telefono = id
+        un_registro
+      rescue Sequel::UniqueConstraintViolation
+        raise UsuarioDuplicado
       end
 
       def cargar_objeto(a_hash)
