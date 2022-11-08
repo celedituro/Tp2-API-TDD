@@ -8,7 +8,11 @@ module WebTemplate
       end
 
       def menus_to_json(menus)
-        menus.to_json
+        lista_de_menus = []
+        menus.each do |menu|
+          lista_de_menus.append({id: menu.id, nombre: menu.nombre, precio: menu.precio})
+        end
+        lista_de_menus.to_json
       end
     end
 

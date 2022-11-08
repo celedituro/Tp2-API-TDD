@@ -4,7 +4,6 @@ Dado(/^que soy un usuario registrado$/) do
 end
 
 Cuando(/^realizo un GET a "([^"]*)"$/) do |comando|
-  p "#{BASE_URL}#{comando}"
   @response = Faraday.get("#{BASE_URL}#{comando}")
 end
 
