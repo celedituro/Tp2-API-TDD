@@ -24,7 +24,7 @@ build_job:
     - apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib libpq-dev cmake # todo check si es necesario
     - gem install bundler --no-document
     - bundle install --without staging production
-    - RACK_ENV=test bundle exec rake
+    - RACK_ENV=test bundle exec rake db:seed
     - RACK_ENV=ci bundle exec rake version > VERSION.txt
   artifacts:
     paths:
