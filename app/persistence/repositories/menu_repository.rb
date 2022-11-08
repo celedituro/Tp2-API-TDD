@@ -1,8 +1,19 @@
 module Persistence
   module Repositories
-    class MenuRepository
-      def obtener_todos
-        [{'id': 1, 'nombre': 'Menu individual', 'precio': 100}, {'id': 2, 'nombre': 'Menu parejas', 'precio': 175}, {'id': 3, 'nombre': 'Menu familiar', 'precio': 250}]
+    class MenusRepository < BaseRepository
+      self.table_name = :menus
+      self.model_class = 'Menu'
+
+      def cargar_objeto(a_hash)
+        Menu.new(a_hash[:id], a_hash[:nombre], a_hash[:precio])
+      end
+
+      def changeset(menu)
+        {
+          id: menu.id,
+          nombre: menu.nombre,
+          precio: menu.precio
+        }
       end
     end
   end

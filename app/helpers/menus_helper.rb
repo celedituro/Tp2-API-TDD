@@ -4,7 +4,7 @@ module WebTemplate
   class App
     module MenusHelper
       def menus_repository
-        Persistence::Repositories::MenuRepository.new
+        Persistence::Repositories::MenusRepository.new
       end
 
       def menus_to_json(menus)

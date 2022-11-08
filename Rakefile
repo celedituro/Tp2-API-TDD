@@ -25,6 +25,7 @@ end
 if %w[development test].include?(RACK_ENV)
 
   task :all do
+    Rake::Task['db:seed'].invoke
     ['rake spec', 'rake cucumber'].each do |cmd|
       puts "Starting to run #{cmd}..."
       system("export DISPLAY=:99.0 && bundle exec #{cmd}")

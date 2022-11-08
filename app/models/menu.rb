@@ -1,5 +1,5 @@
 class Menu
-  attr_reader :nombre, :precio
+  attr_reader :nombre, :precio, :created_on, :updated_on
   attr_accessor :id
 
   def initialize(id, nombre, precio)

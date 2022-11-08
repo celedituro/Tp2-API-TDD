@@ -6,8 +6,8 @@ module Persistence
       def guardar(un_registro)
         insertar(un_registro)
         un_registro
-      rescue UsuarioDuplicado
-        raise UsuarioDuplicado
+      rescue Duplicado
+        raise Duplicado
       end
 
       def primer_registro
@@ -21,6 +21,10 @@ module Persistence
 
       class << self
         attr_accessor :table_name, :model_class
+      end
+
+      def obtener_todos
+        cargar_coleccion dataset.all
       end
 
       protected
@@ -39,7 +43,7 @@ module Persistence
 
       def insertar(un_registro)
         id = dataset.insert(insertar_changeset(un_registro))
-        un_registro.telefono = id
+        un_registro.id = id
         un_registro
       end
 

@@ -1,0 +1,2 @@
+class Duplicado < StandardError
+end

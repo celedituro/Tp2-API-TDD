@@ -6,7 +6,7 @@ class UsuarioCreator
   def crear_usuario(nombre, direccion, telefono)
     usuario = Usuario.new(nombre, direccion, telefono)
     @repository.guardar(usuario)
-  rescue UsuarioDuplicado
-    raise UsuarioDuplicado
+  rescue Duplicado
+    raise Duplicado
   end
 end

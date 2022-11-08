@@ -11,7 +11,7 @@ module Persistence
         un_registro.telefono = id
         un_registro
       rescue Sequel::UniqueConstraintViolation
-        raise UsuarioDuplicado
+        raise Duplicado
       end
 
       def cargar_objeto(a_hash)

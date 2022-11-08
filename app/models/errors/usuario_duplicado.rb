@@ -1,2 +1,0 @@
-class UsuarioDuplicado < StandardError
-end
