@@ -15,14 +15,15 @@ module Persistence
       end
 
       def cargar_objeto(a_hash)
-        Usuario.new(a_hash[:nombre], a_hash[:direccion], a_hash[:telefono])
+        Usuario.new(a_hash[:nombre], a_hash[:direccion], a_hash[:telefono], a_hash[:id])
       end
 
       def changeset(usuario)
         {
           nombre: usuario.nombre,
           direccion: usuario.direccion,
-          telefono: usuario.telefono
+          telefono: usuario.telefono,
+          id: usuario.id
         }
       end
     end

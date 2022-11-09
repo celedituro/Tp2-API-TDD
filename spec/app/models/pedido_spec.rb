@@ -4,7 +4,7 @@ describe Pedido do
   context 'cuando es creado' do
     
     it 'debe ser invalido cuando el menu no esta' do
-        usuario = Usuario.new('nombre','direccion','123456')
+        usuario = Usuario.new('nombre','direccion','123456',1)
         expect { described_class.new(usuario,nil)}.to raise_error(PedidoInvalido, 'pedido invalido')
     end
 
