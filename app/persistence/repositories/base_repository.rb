@@ -27,6 +27,13 @@ module Persistence
         cargar_coleccion dataset.all
       end
 
+      def buscar_por_id(id)
+        found_record = dataset.first(pk_column => id)
+        raise ObjectNotFound.new(self.class.model_class, id) if found_record.nil?
+
+        cargar_objeto dataset.first(found_record)
+      end
+
       protected
 
       def dataset
@@ -76,7 +83,11 @@ module Persistence
       end
 
       def pk_column
-        Sequel[self.class.table_name][:telefono]
+        Sequel[self.class.table_name][:id]
+      end
+
+      def id_column
+        Sequel[self.class.table_name][:id]
       end
     end
   end

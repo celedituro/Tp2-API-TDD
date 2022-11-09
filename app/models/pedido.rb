@@ -1,5 +1,6 @@
 class Pedido
-  # attr_accessor :nombre, :direccion, :telefono, :updated_on, :created_on
+   attr_reader :responsable, :menu, :updated_on, :created_on
+   attr_accessor :id
 
   def initialize(responsable, menu)
     @responsable = responsable
@@ -18,4 +19,16 @@ class Pedido
   def menu_vacio?
     (@menu.nil? || @menu == '')
   end
+
+   def nombre_menu
+     @menu.nombre
+   end
+
+   def id_menu
+     @menu.id
+   end
+
+   def id_usuario
+     @responsable.id
+   end
 end

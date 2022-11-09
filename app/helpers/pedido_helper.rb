@@ -1,9 +1,9 @@
 module WebTemplate
   class App
     module PedidoHelper
-      # def pedido_repository
-      #   Persistence::Repositories::UsuarioRepository.new
-      # end
+      def pedido_repository
+         Persistence::Repositories::PedidoRepository.new
+      end
 
       def parametros_pedido
         @body ||= request.body.read
@@ -11,7 +11,7 @@ module WebTemplate
       end
 
       def pedido_to_json(pedido)
-        atributos_usuario(pedido).to_json
+        atributos_pedido(pedido).to_json
       end
 
       private

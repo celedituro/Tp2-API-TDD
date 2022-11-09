@@ -4,6 +4,13 @@ module Persistence
       self.table_name = :usuarios
       self.model_class = 'Usuario'
 
+      def buscar_por_id(id)
+        found_record = dataset.first(id_column => id)
+        raise ObjectNotFound.new(self.class.model_class, id) if found_record.nil?
+
+        cargar_objeto dataset.first(found_record)
+      end
+
       protected
 
       def insertar(un_registro)
@@ -25,6 +32,10 @@ module Persistence
           telefono: usuario.telefono,
           id: usuario.id
         }
+      end
+
+      def pk_column
+        Sequel[self.class.table_name][:telefono]
       end
     end
   end
