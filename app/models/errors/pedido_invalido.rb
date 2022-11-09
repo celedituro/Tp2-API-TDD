@@ -1,0 +1,2 @@
+class PedidoInvalido < StandardError
+end
