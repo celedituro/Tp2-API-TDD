@@ -1,6 +1,6 @@
 class Pedido
-   attr_reader :responsable, :menu, :updated_on, :created_on
-   attr_accessor :id
+  attr_reader :responsable, :menu, :updated_on, :created_on
+  attr_accessor :id
 
   def initialize(responsable, menu)
     @responsable = responsable
@@ -20,15 +20,15 @@ class Pedido
     (@menu.nil? || @menu == '')
   end
 
-   def nombre_menu
-     @menu.nombre
-   end
+  def nombre_menu
+    @menu.nombre
+  end
 
-   def id_menu
-     @menu.id
-   end
+  def id_menu
+    @menu.id
+  end
 
-   def id_usuario
-     @responsable.id
-   end
+  def id_usuario
+    @responsable.id
+  end
 end

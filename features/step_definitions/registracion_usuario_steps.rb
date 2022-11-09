@@ -17,7 +17,6 @@ Cuando(/^recibo \{nombre: "([^"]*)", direccion: "([^"]*)", telefono: "([^"]*)", 
   expect(datos_response['direccion']).to eq(direccion)
   expect(datos_response['telefono']).to eq(telefono)
   expect(datos_response['id']).to eq(id)
-
 end
 
 Dado(/^que uso el endpoint "([^"]*)" con los datos \{nombre: "([^"]*)", telefono: "([^"]*)", id: (\d+)} como request body$/) do |_comando, nombre, telefono, id|

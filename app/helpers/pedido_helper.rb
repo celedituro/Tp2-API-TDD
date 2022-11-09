@@ -2,7 +2,7 @@ module WebTemplate
   class App
     module PedidoHelper
       def pedido_repository
-         Persistence::Repositories::PedidoRepository.new
+        Persistence::Repositories::PedidoRepository.new
       end
 
       def parametros_pedido

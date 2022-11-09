@@ -9,5 +9,6 @@ RSpec.configure do |config|
     Persistence::Repositories::TagRepository.new.delete_all
     Persistence::Repositories::UserRepository.new.delete_all
     Persistence::Repositories::UsuarioRepository.new.eliminar_todos
+    Persistence::Repositories::PedidoRepository.new.eliminar_todos
   end
 end
