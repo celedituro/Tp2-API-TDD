@@ -9,12 +9,13 @@ module Persistence
         menu = menus_repository.buscar_por_id(a_hash[:id_menu])
         pedido = Pedido.new(usuario, menu)
         pedido.id = a_hash[:id]
+        pedido
       end
 
       def changeset(pedido)
         {
           id_usuario: pedido.id_usuario,
-          id_menu: pedido.id_menu,
+          id_menu: pedido.id_menu
         }
       end
     end
