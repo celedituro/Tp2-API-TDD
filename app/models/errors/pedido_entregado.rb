@@ -1,0 +1,2 @@
+class PedidoYaEntregado < StandardError
+end

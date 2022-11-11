@@ -1,6 +1,6 @@
 class EstadoEntregado
   def actualizar
-    # to do ...
+    raise PedidoYaEntregado
   end
 
   def nombre

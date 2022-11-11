@@ -22,13 +22,3 @@ Y que el estado del pedido es "en preparación"
 Cuando cambio el estado del pedido
 Y pregunto por el estado del pedido
 Entonces el estado es "en camino"
-
-
-Escenario: El pedido pasa en camino a entregado
-Dado que el estado del pedido es "recibido"
-Y cambio el estado del pedido
-Y cambio el estado del pedido
-Y que el estado del pedido es "en camino"
-Cuando cambio el estado del pedido
-Y pregunto por el estado del pedido
-Entonces el estado es "entregado"

@@ -35,6 +35,8 @@ class Pedido
 
   def actualizar
     @estado = @estado.actualizar
+  rescue PedidoYaEntregado
+    raise PedidoYaEntregado
   end
 
   def estado

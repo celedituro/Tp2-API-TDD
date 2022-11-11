@@ -29,6 +29,11 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
       pedido_to_json pedido
     rescue ObjectNotFound
       {nombre_menu: '', id_pedido: 0, estado: ''}.to_json
+    rescue PedidoYaEntregado
+      pedido = pedido_repository.buscar_por_id(params[:id])
+
+      status 202
+      pedido_to_json pedido
     end
   end
 end
