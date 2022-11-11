@@ -41,19 +41,3 @@ Entonces(/^el estado es "([^"]*)"$/) do |estado|
   datos_response = JSON.parse(@response.body)
   expect(datos_response['estado']).to eq(estado)
 end
-
-Dado(/^se termina de preparar un pedido$/) do
-  pending
-end
-
-Cuando(/^hay repartidores libres$/) do
-  pending
-end
-
-Entonces(/^el estado es “En camino”$/) do
-  pending
-end
-
-Dado(/^se entrega un pedido$/) do
-  pending
-end

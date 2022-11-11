@@ -14,17 +14,21 @@ Cuando cambio el estado del pedido
 Y pregunto por el estado del pedido
 Entonces el estado es "en preparación"
 
-@wip
+
 Escenario: El pedido pasa en preparación a en camino
-Dado se termina de preparar un pedido
-Y hay repartidores libres
+Dado que el estado del pedido es "recibido"
+Y cambio el estado del pedido
+Y que el estado del pedido es "en preparación"
 Cuando cambio el estado del pedido
 Y pregunto por el estado del pedido
-Entonces el estado es “En camino”
+Entonces el estado es "en camino"
 
-@wip
+
 Escenario: El pedido pasa en camino a entregado
-Dado se entrega un pedido
+Dado que el estado del pedido es "recibido"
+Y cambio el estado del pedido
+Y cambio el estado del pedido
+Y que el estado del pedido es "en camino"
 Cuando cambio el estado del pedido
 Y pregunto por el estado del pedido
 Entonces el estado es "entregado"

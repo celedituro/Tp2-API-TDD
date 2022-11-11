@@ -18,4 +18,10 @@ describe EstadoFactory do
   
         expect(factory.get_estado('en camino')).to be_an_instance_of(EstadoEnCamino)
     end
+
+    it 'debe crear una instancia de EstadoEntregado al pasarle entregado como parametro' do
+        factory = described_class.new()
+  
+        expect(factory.get_estado('entregado')).to be_an_instance_of(EstadoEntregado)
+    end
 end

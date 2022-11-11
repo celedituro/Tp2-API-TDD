@@ -1,6 +1,6 @@
 class EstadoEnCamino
   def actualizar
-    nil
+    EstadoEntregado.new
   end
 
   def nombre
