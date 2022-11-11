@@ -15,7 +15,8 @@ module Persistence
       def changeset(pedido)
         {
           id_usuario: pedido.id_usuario,
-          id_menu: pedido.id_menu
+          id_menu: pedido.id_menu,
+          estado: pedido.estado
         }
       end
     end

@@ -15,4 +15,12 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
     status 200
     pedido_to_json pedido
   end
+
+  patch :update, :map => '/pedido' do
+    pedido = pedido_repository.buscar_por_id(params[:id])
+    pedido.actualizar
+
+    status 202
+    pedido_to_json pedido
+  end
 end

@@ -30,13 +30,29 @@ Dado(/^creo un pedido con menu individual$/) do
 end
 
 Cuando(/^cambio el estado del pedido$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  @response = Faraday.patch("#{BASE_URL}/pedido", {id: @pedido_id}, header)
 end
 
 Cuando(/^pregunto por el estado del pedido$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Entonces(/^el estado es "([^"]*)"$/) do
+Entonces(/^el estado es "([^"]*)"$/) do |_estado|
   pending # Write code here that turns the phrase above into concrete actions
+end
+
+Dado(/^se termina de preparar un pedido$/) do
+  pending
+end
+
+Cuando(/^hay repartidores libres$/) do
+  pending
+end
+
+Entonces(/^el estado es “En camino”$/) do
+  pending
+end
+
+Dado(/^se entrega un pedido$/) do
+  pending
 end
