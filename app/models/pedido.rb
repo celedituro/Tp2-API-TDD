@@ -1,10 +1,11 @@
 class Pedido
-  attr_reader :responsable, :menu, :updated_on, :created_on
+  attr_reader :responsable, :menu, :updated_on, :created_on, :estado
   attr_accessor :id
 
   def initialize(responsable, menu)
     @responsable = responsable
     @menu = menu
+    @estado = 'recibido'
     validar_pedido!
   end
 

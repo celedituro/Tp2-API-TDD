@@ -8,4 +8,11 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
       status 401
     end
   end
+
+  get :index, :map => '/pedido', :with => :id do
+    pedido = pedido_repository.buscar_por_id(params[:id])
+
+    status 200
+    pedido_to_json pedido
+  end
 end
