@@ -14,5 +14,5 @@ Escenario: Cliente registrado pide un menú individual
   Dado que soy un usuario registrado
   Cuando uso el endpoint a "/pedido" con {id_usuario: "1" , id_menu: 1 }
   Entonces se crea un nuevo pedido
-  Y recibo con nombre_menu: "Menu individual"}"
+  Y recibo con nombre_menu: "Menu individual"
 
