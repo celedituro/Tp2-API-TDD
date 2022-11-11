@@ -30,7 +30,7 @@ Dado(/^creo un pedido con menu individual$/) do
 end
 
 Cuando(/^cambio el estado del pedido$/) do
-  @response = Faraday.patch("#{BASE_URL}/pedido", {id: @pedido_id}, header)
+  @response = Faraday.patch("#{BASE_URL}/pedido?id=#{@pedido_id}")
 end
 
 Cuando(/^pregunto por el estado del pedido$/) do
