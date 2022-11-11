@@ -10,18 +10,25 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
   end
 
   get :index, :map => '/pedido', :with => :id do
-    pedido = pedido_repository.buscar_por_id(params[:id])
-
-    status 200
-    pedido_to_json pedido
+    begin
+      pedido = pedido_repository.buscar_por_id(params[:id])
+      status 200
+      pedido_to_json pedido
+    rescue ObjectNotFound
+      {nombre_menu: '', id_pedido: 0, estado: ''}.to_json
+    end
   end
 
   patch :update, :map => '/pedido' do
-    pedido = pedido_repository.buscar_por_id(params[:id])
-    pedido.actualizar
-    pedido_repository.actualizar(pedido)
+    begin
+      pedido = pedido_repository.buscar_por_id(params[:id])
+      pedido.actualizar
+      pedido_repository.actualizar(pedido)
 
-    status 202
-    pedido_to_json pedido
+      status 202
+      pedido_to_json pedido
+    rescue ObjectNotFound
+      {nombre_menu: '', id_pedido: 0, estado: ''}.to_json
+    end
   end
 end
