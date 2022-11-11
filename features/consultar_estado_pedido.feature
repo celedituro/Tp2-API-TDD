@@ -18,10 +18,10 @@
     Cuando uso el endpoint "/pedido" para consultar el estado del pedido
     Entonces recibo {nombre_menu: "Menu individual", id_pedido: 3, estado: "recibido"}
 
-  @wip
-  Escenario: Cliente consulta un pedido realizado
-    Dado uso el endpoint "/pedido/{2}"
-    Y recibo "{"id_pedido":2,"estado":"recibido"}
-    Cuando cambio el estado del pedido a "en preparacion"
-    Y uso el endpoint "/pedido/{2}"
-    Entonces recibo "{"id_pedido":2,"estado":"en preparacion"}
+  Escenario: Cliente consulta un pedido realizado y cambia de estado
+    Dado creo un pedido con menu individual
+    Y uso el endpoint "/pedido" para consultar el estado del pedido
+    Y recibo {nombre_menu: "Menu individual", id_pedido: 2, estado: "recibido"}
+    Cuando cambio el estado del pedido
+    Y uso el endpoint "/pedido" para consultar el estado del pedido
+    Y recibo {nombre_menu: "Menu individual", id_pedido: 2, estado: "en preparación"}
