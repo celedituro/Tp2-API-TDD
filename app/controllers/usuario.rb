@@ -1,7 +1,8 @@
 WebTemplate::App.controllers :users, :provides => [:json] do
   post :create, :map => '/registrar' do
     begin
-      usuario = UsuarioCreator.new(usuario_repository).crear_usuario(parametros_usuario[:nombre], parametros_usuario[:direccion], parametros_usuario[:telefono], parametros_usuario[:id])
+      #usuario = UsuarioCreator.new(usuario_repository).crear_usuario(parametros_usuario[:nombre], parametros_usuario[:direccion], parametros_usuario[:telefono], parametros_usuario[:id])
+      usuario = UsuarioCreator.new(usuario_repository).crear_usuario(parametros_usuario[:nombre], parametros_usuario[:direccion], parametros_usuario[:telefono], 1)
       status 201
       usuario_to_json usuario
     rescue UsuarioInvalido
