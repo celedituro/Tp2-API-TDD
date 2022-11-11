@@ -27,4 +27,13 @@ describe Pedido do
     pedido.actualizar
     expect(pedido.estado).to eq('en preparación')
   end
+
+  it 'su estado es en camino cuando lo actualizo por segunda vez' do
+    menu = Menu.new(4,'Menu individual', 200)
+    usuario = Usuario.new('nombre','direccion','123456',1)
+    pedido = described_class.new(usuario,menu)
+    pedido.actualizar
+    pedido.actualizar
+    expect(pedido.estado).to eq('en camino')
+  end
 end

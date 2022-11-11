@@ -1,11 +1,11 @@
 class Pedido
   attr_reader :responsable, :menu, :updated_on, :created_on
-  attr_accessor :id, :estado
+  attr_accessor :id
 
   def initialize(responsable, menu)
     @responsable = responsable
     @menu = menu
-    @estado = 'recibido'
+    @estado = EstadoRecibido.new
     validar_pedido!
   end
 
@@ -34,6 +34,10 @@ class Pedido
   end
 
   def actualizar
-    @estado = 'en preparación'
+    @estado = @estado.actualizar
+  end
+
+  def estado
+    @estado.nombre
   end
 end
