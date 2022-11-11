@@ -8,7 +8,6 @@ Antecedentes:
 Dado que soy un usuario registrado 
 Y creo un pedido con menu individual
 
-@wip
 Escenario: El pedido pasa de recibido a en preparación
 Dado que el estado del pedido es "recibido"
 Cuando cambio el estado del pedido

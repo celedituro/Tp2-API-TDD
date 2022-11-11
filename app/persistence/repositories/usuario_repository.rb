@@ -11,6 +11,10 @@ module Persistence
         cargar_objeto dataset.first(found_record)
       end
 
+      def actualizar(un_registro)
+        buscar_dataset_por_id(un_registro.telefono).update(actualizar_changeset(un_registro))
+      end
+
       protected
 
       def insertar(un_registro)

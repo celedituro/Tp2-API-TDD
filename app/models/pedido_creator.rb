@@ -8,7 +8,7 @@ class PedidoCreator
   def crear_pedido(id_usuario, id_menu)
     usuario = @usuario_repo.buscar_por_id(id_usuario)
     menu = @menu_repo.buscar_por_id(id_menu)
-    pedido = Pedido.new(usuario, menu)
+    pedido = Pedido.new(usuario, menu, EstadoRecibido.new)
     @pedido_repo.guardar(pedido)
   rescue ObjectNotFound
     raise UsuarioNoRegistrado

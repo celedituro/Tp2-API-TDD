@@ -18,7 +18,7 @@ Entonces(/^recibo con nombre_menu: "([^"]*)"$/) do |nombre_menu|
 end
 
 Dado(/^que el estado del pedido es "([^"]*)"$/) do |estado|
-  @response = Faraday.get("#{BASE_URL}/pedido/#{@pedido_id}", @request, header)
+  @response = Faraday.get("#{BASE_URL}/pedido/#{@pedido_id}")
   datos_response = JSON.parse(@response.body)
   expect(datos_response['estado']).to eq(estado)
 end
@@ -26,7 +26,7 @@ end
 Dado(/^creo un pedido con menu individual$/) do
   @request = {id_usuario: '1', id_menu: 1}.to_json
   @response = Faraday.post("#{BASE_URL}/pedido", @request, header)
-  @pedido_id = JSON.parse(@response.body)['id']
+  @pedido_id = JSON.parse(@response.body)['id_pedido']
 end
 
 Cuando(/^cambio el estado del pedido$/) do
@@ -34,11 +34,12 @@ Cuando(/^cambio el estado del pedido$/) do
 end
 
 Cuando(/^pregunto por el estado del pedido$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  @response = Faraday.get("#{BASE_URL}/pedido/#{@pedido_id}")
 end
 
-Entonces(/^el estado es "([^"]*)"$/) do |_estado|
-  pending # Write code here that turns the phrase above into concrete actions
+Entonces(/^el estado es "([^"]*)"$/) do |estado|
+  datos_response = JSON.parse(@response.body)
+  expect(datos_response['estado']).to eq(estado)
 end
 
 Dado(/^se termina de preparar un pedido$/) do

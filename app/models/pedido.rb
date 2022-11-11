@@ -2,10 +2,10 @@ class Pedido
   attr_reader :responsable, :menu, :updated_on, :created_on
   attr_accessor :id
 
-  def initialize(responsable, menu)
+  def initialize(responsable, menu, estado)
     @responsable = responsable
     @menu = menu
-    @estado = EstadoRecibido.new
+    @estado = estado
     validar_pedido!
   end
 

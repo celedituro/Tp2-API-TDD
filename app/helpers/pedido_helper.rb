@@ -17,7 +17,7 @@ module WebTemplate
       private
 
       def atributos_pedido(pedido)
-        {nombre_menu: pedido.nombre_menu, id_pedido: pedido.id}
+        {nombre_menu: pedido.nombre_menu, id_pedido: pedido.id, estado: pedido.estado}
       end
 
       # def user_mapper

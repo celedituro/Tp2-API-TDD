@@ -19,6 +19,7 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
   patch :update, :map => '/pedido' do
     pedido = pedido_repository.buscar_por_id(params[:id])
     pedido.actualizar
+    pedido_repository.actualizar(pedido)
 
     status 202
     pedido_to_json pedido

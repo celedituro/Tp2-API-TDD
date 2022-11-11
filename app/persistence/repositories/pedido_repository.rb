@@ -5,9 +5,13 @@ module Persistence
       self.model_class = 'Pedido'
 
       def cargar_objeto(a_hash)
+        usuario_repository = Persistence::Repositories::UsuarioRepository.new
         usuario = usuario_repository.buscar_por_id(a_hash[:id_usuario])
+        menus_repository = Persistence::Repositories::MenusRepository.new
         menu = menus_repository.buscar_por_id(a_hash[:id_menu])
-        pedido = Pedido.new(usuario, menu)
+        factory = EstadoFactory.new
+        estado = factory.get_estado(a_hash[:estado])
+        pedido = Pedido.new(usuario, menu, estado)
         pedido.id = a_hash[:id]
         pedido
       end

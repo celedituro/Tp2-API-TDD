@@ -34,6 +34,10 @@ module Persistence
         cargar_objeto dataset.first(found_record)
       end
 
+      def actualizar(un_registro)
+        buscar_dataset_por_id(un_registro.id).update(actualizar_changeset(un_registro))
+      end
+
       protected
 
       def dataset
@@ -42,10 +46,6 @@ module Persistence
 
       def cargar_coleccion(rows)
         rows.map { |un_registro| cargar_objeto(un_registro) }
-      end
-
-      def actualizar(un_registro)
-        buscar_dataset_por_id(un_registro.telefono).update(actualizar_changeset(un_registro))
       end
 
       def insertar(un_registro)
