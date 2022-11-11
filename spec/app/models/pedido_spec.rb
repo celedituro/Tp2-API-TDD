@@ -18,5 +18,13 @@ describe Pedido do
       usuario = Usuario.new('nombre','direccion','123456',1)
       expect(described_class.new(usuario,menu).estado).to eq('recibido')
     end
-end
+  end
+
+  it 'su estado es en preparación cuando lo actualizo por primera vez' do
+    menu = Menu.new(4,'Menu individual', 200)
+    usuario = Usuario.new('nombre','direccion','123456',1)
+    pedido = described_class.new(usuario,menu)
+    pedido.actualizar
+    expect(pedido.estado).to eq('en preparación')
+  end
 end
