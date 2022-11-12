@@ -27,6 +27,7 @@ module WebTemplate
     post '/reset', :provides => [:js] do
       if ENV['ENABLE_RESET'] == 'true'
         usuario_repository.eliminar_todos
+        repartidor_repository.eliminar_todos
 
         status 200
         {message: 'reset ok'}.to_json

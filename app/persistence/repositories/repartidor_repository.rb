@@ -1,7 +1,7 @@
 module Persistence
   module Repositories
     class RepartidorRepository < BaseRepository
-      self.table_name = :repartidor
+      self.table_name = :repartidores
       self.model_class = 'Repartidor'
 
       protected
