@@ -5,20 +5,22 @@ Como cliente registrado
 Quiero cancelar un pedido
 
 Antecedentes:
-  Dado que uso el endpoint /registrar con los datos {"nombre": "pepe", "direccion":"Cucha20Cucha","telefono":"3452-1234"} como request body
-  Y se registra el usuario
-  Y recibo {"nombre": "pepe","direccion":"Cucha20Cucha","telefono":"3452-1234"} como response.
+  Dado que soy un usuario registrado
+  Y creo un pedido con menu individual
 
 @wip
 Escenario: Cliente cancela un pedido en estado recibido
-  Dado uso el endpoint a "/pedido" con {id_usuario: "1" , id_menu: 1}\
   Y que el estado del pedido es "recibido"
-  Cuando uso el endpoint a "/cancelacion" con {id_usuario: 1 , id_pedido: 1 }
-  Entonces recibo un código http "200" y {id_pedido: 1}
+  Cuando uso el endpoint a "/cancelacion" con id_pedido: 5
+  Entonces recibo un código http "200"
+  Y  recibo {id_pedido: 5, estado: "cancelado"}
 
 @wip
 Escenario: Cliente cancela un pedido en estado en preparación
-  Dado uso el endpoint a "/pedido" con {id_usuario: "1" , id_menu: x1}\
+  Y cambio el estado del pedido
+  Y que el estado del pedido es "recibido"
+  Y cambio el estado del pedido
   Y que el estado del pedido es "en preparacion"
-  Cuando uso el endpoint a "/cancelacion" con {id_usuario: 1 , id_pedido: 1 }
-  Entonces recibo un código http "200" y {id_pedido: 1}
+  Cuando uso el endpoint a "/cancelacion" con id_pedido: 5
+  Entonces recibo un código http "200"
+  Y  recibo {id_pedido: 5, estado: "cancelado"}
