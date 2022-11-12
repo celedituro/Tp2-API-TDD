@@ -7,7 +7,7 @@ class EstadoEnCamino
     'en camino'
   end
 
-  #TO-DO lanzar excepcion
+  # TO-DO lanzar excepcion
   def cancelar
     EstadoCancelado.new
   end

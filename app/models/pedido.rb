@@ -46,6 +46,7 @@ class Pedido
   def cancelar
     @estado = @estado.cancelar
   end
+
   def estado
     @estado.nombre
   end

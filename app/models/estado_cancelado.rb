@@ -3,8 +3,7 @@ class EstadoCancelado
     'cancelado'
   end
 
-
-  #TO-DO lanzar excepcion
+  # TO-DO lanzar excepcion
   def actualizar
     EstadoCancelado.new
   end
