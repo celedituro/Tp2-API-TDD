@@ -16,19 +16,11 @@ module WebTemplate
         atributos_usuario(usuario).to_json
       end
 
-      # def users_to_json(users)
-      #  users.map { |user| user_attributes(user) }.to_json
-      # end
-
       private
 
       def atributos_usuario(usuario)
         {nombre: usuario.nombre, telefono: usuario.telefono, direccion: usuario.direccion, id: usuario.id}
       end
-
-      # def user_mapper
-      #  Persistence::Mappers::UserMapper.new
-      # end
     end
 
     helpers UsuarioHelper
