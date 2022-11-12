@@ -43,22 +43,21 @@ Entonces(/^el estado es "([^"]*)"$/) do |estado|
 end
 
 Cuando(/^uso el endpoint "([^"]*)"$/) do |enpoint|
-  @response = Faraday.get("#{BASE_URL}/#{enpoint}")
+  @response = Faraday.get("#{BASE_URL}#{enpoint}")
 end
 
-def pedidos_esperados(reponse, idx, id_pedido_esperado, id_menu_esperado, nombre_esperado, precio_esperado, estado_esperado)
-  expect(reponse[idx]['id_pedido']).to eq(id_pedido_esperado)
-  expect(reponse[idx]['id']).to eq(id_menu_esperado)
-  expect(reponse[idx]['nombre']).to eq(nombre_esperado)
+# rubocop: disable Metrics/ParameterLists, Layout/LineLength, Metrics/AbcSize
+def pedidos_esperados(reponse, idx, _id_pedido_esperado, id_menu_esperado, nombre_esperado, precio_esperado, estado_esperado)
+  expect(reponse[idx]['id_menu']).to eq(id_menu_esperado)
+  expect(reponse[idx]['nombre_menu']).to eq(nombre_esperado)
   expect(reponse[idx]['precio']).to eq(precio_esperado)
   expect(reponse[idx]['estado']).to eq(estado_esperado)
 end
 
-# rubocop: disable Metrics/ParameterLists
-Entonces(/^recibo \[\{id_pedido: (\d+), id: (\d+), nombre:"([^"])", precio: (\d+), estado:"([^"])"\},\{id_pedido: (\d+), id: (\d+), nombre:"([^"])", precio: (\d+), estado:"([^"])"\},\{id_pedido: (\d+), id: (\d+), nombre:"([^"])", precio: (\d+), estado:"([^"])"\}\] como response$/) do |id_pedido1, id_menu1, nombre1, precio1, estado1, id_pedido2, id_menu2, nombre2, precio2, estado2, id_pedido3, id_menu3, nombre3, precio3, estado3|
+Entonces(/^recibo \[\{id_pedido: (\d+), id: (\d+), nombre:"([^"]*)", precio: (\d+), estado:"([^"]*)"\},\{id_pedido: (\d+), id: (\d+), nombre:"([^"]*)", precio: (\d+), estado:"([^"]*)"\},\{id_pedido: (\d+), id: (\d+), nombre:"([^"]*)", precio: (\d+), estado:"([^"]*)"\}\] como response$/) do |id_pedido1, id_menu1, nombre1, precio1, estado1, id_pedido2, id_menu2, nombre2, precio2, estado2, id_pedido3, id_menu3, nombre3, precio3, estado3|
   datos_response = JSON.parse(@response.body)
   pedidos_esperados(datos_response, 0, Integer(id_pedido1), Integer(id_menu1), nombre1, Integer(precio1), estado1)
   pedidos_esperados(datos_response, 1, Integer(id_pedido2), Integer(id_menu2), nombre2, Integer(precio2), estado2)
   pedidos_esperados(datos_response, 2, Integer(id_pedido3), Integer(id_menu3), nombre3, Integer(precio3), estado3)
 end
-# rubocop: enable Metrics/ParameterLists
+# rubocop: enable Metrics/ParameterLists, Layout/LineLength, Metrics/AbcSize

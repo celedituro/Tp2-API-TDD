@@ -28,6 +28,7 @@ module WebTemplate
       if ENV['ENABLE_RESET'] == 'true'
         usuario_repository.eliminar_todos
         repartidor_repository.eliminar_todos
+        pedido_repository.eliminar_todos
 
         status 200
         {message: 'reset ok'}.to_json

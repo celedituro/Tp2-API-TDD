@@ -17,7 +17,7 @@ module WebTemplate
       def pedidos_to_json(pedidos)
         lista_de_pedidos = []
         pedidos.each do |pedido|
-          lista_de_pedidos.append(pedido_to_json(pedido))
+          lista_de_pedidos.append({id_menu: pedido.id_menu, nombre_menu: pedido.nombre_menu, precio: pedido.precio_menu, id_pedido: pedido.id, estado: pedido.estado})
         end
         lista_de_pedidos.to_json
       end

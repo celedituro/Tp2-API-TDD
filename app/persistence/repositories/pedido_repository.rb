@@ -19,7 +19,7 @@ module Persistence
       end
 
       def buscar_pedidos_de(id_usuario)
-        dataset.where(id_usuario_column => id_usuario)
+        cargar_coleccion dataset.where(id_usuario_column => id_usuario)
       end
 
       def id_usuario_column
