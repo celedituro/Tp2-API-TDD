@@ -42,10 +42,24 @@ Entonces(/^el estado es "([^"]*)"$/) do |estado|
   expect(datos_response['estado']).to eq(estado)
 end
 
-Cuando(/^uso el endpoint "([^"]*)"$/) do |_comando|
-  pending
+Cuando(/^uso el endpoint "([^"]*)"$/) do |enpoint|
+  @response = Faraday.get("#{BASE_URL}/#{enpoint}")
 end
 
-Entonces(/^recibo \[\{id_pedido:1, id:1, nombre:"([^"]*)", precio:100, estado:"([^"]*)"\},\{id_pedido:2, id:1, nombre:"([^"]*)", precio:100, estado:"([^"]*)"\},\{id_pedido:4, id:3, nombre:"([^"]*)", precio:250, estado:"([^"]*)"\}\] como response$/) do |_arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11, _arg12, _arg13, _arg14, _arg15|
-  pending
+def pedidos_esperados(reponse, idx, id_pedido_esperado, id_menu_esperado, nombre_esperado, precio_esperado, estado_esperado)
+  expect(reponse[idx]['id_pedido']).to eq(id_pedido_esperado)
+  expect(reponse[idx]['id']).to eq(id_menu_esperado)
+  expect(reponse[idx]['nombre']).to eq(nombre_esperado)
+  expect(reponse[idx]['precio']).to eq(precio_esperado)
+  expect(reponse[idx]['estado']).to eq(estado_esperado)
 end
+
+# rubocop: disable Metrics/ParameterLists
+Entonces(/^recibo \[\{id_pedido:(\d*), id:(\d*), nombre:"([^"])", precio:(\d*), estado:"([^"])"\},\{id_pedido:(\d*), id:(\d*), nombre:"([^"])", precio:(\d*), estado:"([^"])"\},\{id_pedido:(\d*), id:(\d*), nombre:"([^"])", precio:(\d*), estado:"([^"])"\}\] como response$/) do
+  |id_pedido1, id_menu1, nombre1, precio1, estado1, id_pedido2, id_menu2, nombre2, precio2, estado2, id_pedido3, id_menu3, nombre3, precio3, estado3|
+  datos_response = JSON.parse(@response.body)
+  pedidos_esperados(datos_response, 0, Integer(id_pedido1), Integer(id_menu1), nombre1, Integer(precio1), estado1)
+  pedidos_esperados(datos_response, 1, Integer(id_pedido2), Integer(id_menu2), nombre2, Integer(precio2), estado2)
+  pedidos_esperados(datos_response, 2, Integer(id_pedido3), Integer(id_menu3), nombre3, Integer(precio3), estado3)
+end
+# rubocop: enable Metrics/ParameterLists

@@ -16,6 +16,14 @@ module Persistence
         pedido
       end
 
+      def buscar_pedidos_de(id_usuario)
+        dataset.where(id_usuario_column => id_usuario)
+      end
+
+      def id_usuario_column
+        Sequel[self.class.table_name][:id_usuario]
+      end
+
       def changeset(pedido)
         {
           id_usuario: pedido.id_usuario,

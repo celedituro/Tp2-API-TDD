@@ -25,6 +25,10 @@ class Pedido
     @menu.nombre
   end
 
+  def precio_menu
+    @menu.precio
+  end
+
   def id_menu
     @menu.id
   end
