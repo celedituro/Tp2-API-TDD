@@ -6,4 +6,8 @@ class EstadoEnPreparacion
   def nombre
     'en preparación'
   end
+
+  def cancelar
+    EstadoCancelado.new
+  end
 end

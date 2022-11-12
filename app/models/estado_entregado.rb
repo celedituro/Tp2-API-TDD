@@ -6,4 +6,9 @@ class EstadoEntregado
   def nombre
     'entregado'
   end
+
+  #TO-DO lanzar excepcion
+  def cancelar
+    EstadoCancelado.new
+  end
 end
