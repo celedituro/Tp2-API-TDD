@@ -6,4 +6,8 @@ class EstadoRecibido
   def nombre
     'recibido'
   end
+
+  def cancelar
+    EstadoCancelado.new
+  end
 end

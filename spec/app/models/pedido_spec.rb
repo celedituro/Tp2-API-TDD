@@ -43,4 +43,12 @@ describe Pedido do
     pedido.actualizar
     expect(pedido.estado).to eq('entregado')
   end
+
+  it 'su estado es cancelado cuando lo cancelo estando recibido' do
+    menu = Menu.new(4,'Menu individual', 200)
+    usuario = Usuario.new('nombre','direccion','123456',1)
+    pedido = described_class.new(usuario,menu,EstadoRecibido.new)
+    pedido.cancelar
+    expect(pedido.estado).to eq('cancelado')
+  end
 end

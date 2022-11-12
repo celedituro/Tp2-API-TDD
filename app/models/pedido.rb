@@ -43,6 +43,9 @@ class Pedido
     raise PedidoYaEntregado
   end
 
+  def cancelar
+    @estado = @estado.cancelar
+  end
   def estado
     @estado.nombre
   end
