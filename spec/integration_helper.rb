@@ -5,10 +5,6 @@ require_relative './factories/user_factory'
 RSpec.configure do |config|
   config.include UserFactory
   config.after :each do
-    Persistence::Repositories::TaskRepository.new.delete_all
-    Persistence::Repositories::TagRepository.new.delete_all
-    Persistence::Repositories::UserRepository.new.delete_all
     Persistence::Repositories::UsuarioRepository.new.eliminar_todos
-    Persistence::Repositories::PedidoRepository.new.eliminar_todos
   end
 end
