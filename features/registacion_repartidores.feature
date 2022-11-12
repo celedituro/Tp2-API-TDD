@@ -4,7 +4,6 @@ Característica: Registración de repartidores
   Como empleado de la Nonna
   Quiero registrar un repartidor
 
-@wip
 Escenario: Registración exitosa con codigo http
   Dado que uso el endpoint "/repartidor" con los datos {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como request body
   Cuando registro un repartidor
