@@ -41,3 +41,11 @@ Entonces(/^el estado es "([^"]*)"$/) do |estado|
   datos_response = JSON.parse(@response.body)
   expect(datos_response['estado']).to eq(estado)
 end
+
+Cuando(/^uso el endpoint "([^"]*)"$/) do |comando|
+  pending
+end
+
+Entonces(/^recibo \[\{id_pedido:1, id:1, nombre:"([^"]*)", precio:100, estado:"([^"]*)"\},\{id_pedido:2, id:1, nombre:"([^"]*)", precio:100, estado:"([^"]*)"\},\{id_pedido:4, id:3, nombre:"([^"]*)", precio:250, estado:"([^"]*)"\}\] como response$/) do |arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15|
+  pending
+end
