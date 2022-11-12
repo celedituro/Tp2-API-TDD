@@ -48,7 +48,11 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
   end
 
   patch :update, :map => '/cancelacion' do
+    pedido = pedido_repository.buscar_por_id(params[:id])
+    pedido.cancelar
+    pedido_repository.actualizar(pedido)
+
     status 200
-    {id_pedido: params[:id], estado: 'cancelado'}.to_json
+    pedido_to_json pedido
   end
 end

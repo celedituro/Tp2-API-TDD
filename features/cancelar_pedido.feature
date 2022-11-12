@@ -14,12 +14,10 @@ Escenario: Cliente cancela un pedido en estado recibido
   Entonces recibo un código http "200"
   Y  recibo {id_pedido: 5, estado: "cancelado"}
 
-@wip
 Escenario: Cliente cancela un pedido en estado en preparación
-  Y cambio el estado del pedido
   Y que el estado del pedido es "recibido"
   Y cambio el estado del pedido
-  Y que el estado del pedido es "en preparacion"
+  Y que el estado del pedido es "en preparación"
   Cuando uso el endpoint a "/cancelacion" con id_pedido: 5
   Entonces recibo un código http "200"
   Y  recibo {id_pedido: 5, estado: "cancelado"}
