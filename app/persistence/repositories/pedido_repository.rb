@@ -30,7 +30,8 @@ module Persistence
         {
           id_usuario: pedido.id_usuario,
           id_menu: pedido.id_menu,
-          estado: pedido.estado
+          estado: pedido.estado,
+          calificacion: pedido.calificacion
         }
       end
     end

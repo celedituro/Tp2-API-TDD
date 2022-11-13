@@ -22,6 +22,10 @@ module WebTemplate
         lista_de_pedidos.to_json
       end
 
+      def calificacion_pedido_to_json(pedido)
+        {id_pedido: pedido.id, calificacion: pedido.calificacion}.to_json
+      end
+
       private
 
       def atributos_pedido(pedido)

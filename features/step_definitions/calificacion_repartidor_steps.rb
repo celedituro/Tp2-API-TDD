@@ -4,7 +4,8 @@ When(/^uso el endpoint a "([^"]*)" con \{id_usuario: "([^"]*)" , id_pedido: (\d+
   @response = Faraday.patch("#{BASE_URL}#{@comando}", @request, header)
 end
 
-When(/^recibo \{id_pedido: (\d+)\}$/) do |_id_pedido|
+When(/^recibo \{id_pedido: (\d+), calificacion: (\d+)\}$/) do |_id_pedido, calificacion|
   datos_response = JSON.parse(@response.body)
   expect(datos_response['id_pedido']).to eq(@pedido_id)
+  expect(datos_response['calificacion']).to eq(calificacion)
 end
