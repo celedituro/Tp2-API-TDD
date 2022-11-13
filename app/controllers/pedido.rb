@@ -55,4 +55,13 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
     status 200
     pedido_to_json pedido
   end
+
+  patch :update, :map => '/calificacion' do
+    pedido = pedido_repository.buscar_por_id(parametros_pedido[:id_pedido])
+    pedido.calificar(parametros_pedido[:calificacion])
+    # pedido_repository.actualizar(pedido)
+
+    status 200
+    {id_pedido: pedido.id}.to_json
+  end
 end

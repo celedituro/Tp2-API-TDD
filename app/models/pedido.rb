@@ -1,11 +1,12 @@
 class Pedido
-  attr_reader :responsable, :menu, :updated_on, :created_on
+  attr_reader :responsable, :menu, :updated_on, :created_on, :calificacion
   attr_accessor :id
 
   def initialize(responsable, menu, estado)
     @responsable = responsable
     @menu = menu
     @estado = estado
+    @calificacion = nil
     validar_pedido!
   end
 
@@ -49,5 +50,9 @@ class Pedido
 
   def estado
     @estado.nombre
+  end
+
+  def calificar(calificacion)
+    @calificacion = calificacion
   end
 end

@@ -73,4 +73,19 @@ describe Pedido do
     pedido = described_class.new(usuario,menu,EstadoEntregado.new)
     expect { pedido.cancelar }.to raise_error(CancelarPedidoError)
   end
+
+  it 'su calificacion es nil cuando se crea un pedido' do
+    menu = Menu.new(4,'Menu individual', 200)
+    usuario = Usuario.new('nombre','direccion','123456',1)
+    pedido = described_class.new(usuario,menu,EstadoEnPreparacion.new)
+    expect(pedido.calificacion).to eq(nil)
+  end
+
+  it 'su calificacion es 3 cuando se califica un pedido con 3' do
+    menu = Menu.new(4,'Menu individual', 200)
+    usuario = Usuario.new('nombre','direccion','123456',1)
+    pedido = described_class.new(usuario,menu,EstadoEnPreparacion.new)
+    pedido.calificar(3)
+    expect(pedido.calificacion).to eq(3)
+  end
 end
