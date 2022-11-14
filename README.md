@@ -12,68 +12,56 @@
 `produccion` [http://salta-api-prod.herokuapp.com/](http://salta-api-prod.herokuapp.com/)
 
 
-### Run local with Docker
+### Correr local en Docker
 
-For docker development purpose, you may install
+Para un desarrollo utilizando Docker se debe instalar desde 
 [docker](https://docs.docker.com/get-docker/)
 
-1\) You first need to build the image running:
+1\) Primero se debe contruir la imagen corriendo
 
 `docker build -f Dockerfile -t <image_name:version> .`
 
-For image name, you can avoid version so it will be build as "latest".
-For example, web-template or web-template:1.0.0
+Para image name, se puede evitar y se construirá como "latest".
+Por ejemeplo, web-template or web-template:1.0.0
 
 `docker build -f Dockerfile -t web-template .`
 
-2\) Once you have the image, you can start the server with:
+2\) Una vez que usted tiene la imagen, puede levantar el servidor corriendo:
 
 `docker run -it -p <port>:<port> <image_name:version>`
 
-Again, for example:
+Nuevamente, por ejemplo:
 
 `docker run -it -p 3000:3000 web-template`
 
-Then, open the browser and go to http://0.0.0.0:3000
+Luego, abra su navegador y ingrese en http://0.0.0.0:3000
 
-### Run local with Docker Compose
+### Correr local con Docker Compose
 
-First, get [docker-compose](https://docs.docker.com/compose/install/).
+Primero, obtén [docker-compose](https://docs.docker.com/compose/install/).
 
-Then, you can run script `start_dev_containers.sh`. After this, you will be inside the container.
+Luego, puede ejecutar `start_dev_containers.sh` para sistemas Unix o `start_dev_container.cmd` para sistemas Windows . Luego de esto estará dentro del contenedor
 
-Start the app with `bundle exec padrino start -h 0.0.0.0` and check health in another terminal at `http://localhost:3000/`
+Comience la app usando el comando `bundle exec padrino start -h 0.0.0.0` y checkee el estado de esta a través de `http://localhost:3000/`
 
+### Deploy con Dockerfile + Heroku
 
-### Run local with Vagrant
+1\) Setee `HEROKU_TOKEN` como variable de entorno con su token personal
 
-1\) Install [Vagrant](https://www.vagrantup.com/downloads.html)
-
-2\) Run `vagrant up`. This will create a virtual machine in virtual box as specified on `Vagrantfile`
-
-3\) When all the installation finish, you get inside that VM with `vagrant ssh` and run:
-
-```
-cd /vagrant
-bundle
-```
-
-4.1\) You have your environment ready. You can start the app running `bundle exec padrino start -h 0.0.0.0`
-
-4.2\) Set `DATABASE_URL=postgres://webtemplate:webtemplate@localhost/webtemplate_development` before running
-
-5\) When you are done, don't forget to leave ssh (just exit in vagrant shell) and stop the VM with `vagrant halt`
-
-Every time you want to start the server, you may repeat step 3 and 4.
+2\) Ejecute `./scripts/build-image.sh` para crear el binario y luego ejecute `./scripts/deploy.sh` para actualizar heroku runtime
 
 
-### Deploy with Dockerfile + Heroku
+# Testing y migraciones
 
-1\) Set `HEROKU_TOKEN` environment var with your heroku token.
+### Migraciones
 
-2\) Run `./scripts/build-image.sh` to create the binary and then `./scripts/deploy.sh` to update heroku runtime.
+RACK_ENV=test bundle exec rake db:migrate db:seed
+RACK_ENV=development bundle exec rake db:migrate db:seed
 
 
-# Acceptance Test
 
-During development, when a developer works on his cucumber create an in-process instance of the application, so it is enough to run cucumber, nothing else is needed.
+Para correr los test de la aplicación, dentro del contenedor pueed ejecutar el script `sh test.sh`
+
+# Test de Aceptación
+
+Durante el desarrollo, cuando un desarrollador trabaja con sus cucumbers crea una instancia en progreso de la aplicacion, por lo que es suficiente correr los cucumbers
