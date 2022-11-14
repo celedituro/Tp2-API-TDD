@@ -1,12 +1,15 @@
 # Salta Api
 
-This is a simple web project based on Padrino.
-
 ### Integrantes del grupo
 * [Dituro Celeste](https://gitlab.com/celedituro)
 * [Lopez Victoria Abril](https://gitlab.com/vickyylopezz)
 * [Pfaab Ivan Lautaro](https://gitlab.com/ipfaab)
 * [Villores Alejo](https://gitlab.com/alejovillores)
+
+
+### Ambientes
+`test` [http://salta-api-test.herokuapp.com/](http://salta-api-test.herokuapp.com/)\
+`produccion` [http://salta-api-prod.herokuapp.com/](http://salta-api-prod.herokuapp.com/)
 
 
 ### Run local with Docker
