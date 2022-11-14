@@ -61,3 +61,23 @@ Entonces(/^recibo \[\{id_pedido: (\d+), id: (\d+), nombre:"([^"]*)", precio: (\d
   pedidos_esperados(datos_response, 2, Integer(id_pedido3), Integer(id_menu3), nombre3, Integer(precio3), estado3)
 end
 # rubocop: enable Metrics/ParameterLists, Layout/LineLength, Metrics/AbcSize
+
+Dado(/^el id_repartidor asociado al pedido es "([^"]*)"$/) do |id_repartidor|
+  pending
+end
+
+Cuando(/^se buscan los repartidores libres$/) do
+  pending
+end
+
+Cuando(/^el repartidor con id_repartidor (\d+) está libre$/) do |id_repartidor|
+  pending
+end
+
+Entonces(/^el id_repartidor del pedido es (\d+)$/) do |id_repartidor|
+  pending
+end
+
+Entonces(/^el estado del pedido pasa a ser "([^"]*)"$/) do |estado|
+  pending
+end
