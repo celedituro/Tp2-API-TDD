@@ -28,12 +28,9 @@ module WebTemplate
 
       private
 
+      #TODO: null pattern
       def atributos_pedido(pedido)
-        if !pedido.repartidor.nil?
-          {nombre_menu: pedido.nombre_menu, id_pedido: pedido.id, estado: pedido.estado, nombre_repartidor: pedido.repartidor.nombre_usuario}
-        else
-          {nombre_menu: pedido.nombre_menu, id_pedido: pedido.id, estado: pedido.estado}
-        end
+        {nombre_menu: pedido.nombre_menu, id_pedido: pedido.id, estado: pedido.estado, nombre_repartidor: pedido.repartidor.nil? ? 'No asignado' : pedido.repartidor.nombre_usuario}
       end
     end
 
