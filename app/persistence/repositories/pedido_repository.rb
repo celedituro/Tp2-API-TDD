@@ -5,17 +5,34 @@ module Persistence
       self.model_class = 'Pedido'
 
       def cargar_objeto(a_hash)
-        usuario_repository = Persistence::Repositories::UsuarioRepository.new
-        menus_repository = Persistence::Repositories::MenusRepository.new
-        factory = EstadoFactory.new
+        begin
+          usuario_repository = Persistence::Repositories::UsuarioRepository.new
+          menus_repository = Persistence::Repositories::MenusRepository.new
+          repartidor_repository = Persistence::Repositories::RepartidorRepository.new
+          factory = EstadoFactory.new
 
-        usuario = usuario_repository.buscar_por_id(a_hash[:id_usuario])
-        menu = menus_repository.buscar_por_id(a_hash[:id_menu])
+          usuario = usuario_repository.buscar_por_id(a_hash[:id_usuario])
+          menu = menus_repository.buscar_por_id(a_hash[:id_menu])
+          repartidor = repartidor_repository.buscar_por_id(a_hash[:nombre_repartidor])
 
-        estado = factory.get_estado(a_hash[:estado])
-        pedido = Pedido.new(usuario, menu, estado)
-        pedido.id = a_hash[:id]
-        pedido
+          estado = factory.get_estado(a_hash[:estado])
+          pedido = Pedido.new(usuario, menu, estado)
+          pedido.asignar_repartidor(repartidor)
+          pedido.id = a_hash[:id]
+          pedido
+        rescue ObjectNotFound
+          usuario_repository = Persistence::Repositories::UsuarioRepository.new
+          menus_repository = Persistence::Repositories::MenusRepository.new
+          factory = EstadoFactory.new
+
+          usuario = usuario_repository.buscar_por_id(a_hash[:id_usuario])
+          menu = menus_repository.buscar_por_id(a_hash[:id_menu])
+
+          estado = factory.get_estado(a_hash[:estado])
+          pedido = Pedido.new(usuario, menu, estado)
+          pedido.id = a_hash[:id]
+          pedido
+        end
       end
 
       def buscar_pedidos_de(id_usuario)
@@ -31,7 +48,8 @@ module Persistence
           id_usuario: pedido.id_usuario,
           id_menu: pedido.id_menu,
           estado: pedido.estado,
-          calificacion: pedido.calificacion
+          calificacion: pedido.calificacion,
+          nombre_repartidor: pedido.repartidor.nil? ? nil : pedido.nombre_repartidor
         }
       end
     end

@@ -1,12 +1,13 @@
 class Pedido
   attr_reader :responsable, :menu, :updated_on, :created_on, :calificacion
-  attr_accessor :id
+  attr_accessor :id, :repartidor
 
   def initialize(responsable, menu, estado)
     @responsable = responsable
     @menu = menu
     @estado = estado
     @calificacion = nil
+    @repartidor = nil
     validar_pedido!
   end
 
@@ -54,5 +55,13 @@ class Pedido
 
   def calificar(calificacion)
     @calificacion = calificacion
+  end
+
+  def asignar_repartidor(repartidor)
+    @repartidor = repartidor
+  end
+
+  def nombre_repartidor
+    @repartidor.nombre_usuario
   end
 end

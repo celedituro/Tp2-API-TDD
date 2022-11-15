@@ -9,6 +9,10 @@ describe Repartidor do
     it 'debe ser invalido cuando el nombre no esta' do
       expect { described_class.new('juangomezz',nil) }.to raise_error(RepartidorInvalido, 'repartidor invalido')
     end
+
+    it 'debe estar libre' do
+      expect(described_class.new('juangomezz','Juan').esta_libre).to eq(true)
+    end
   end
 
 end

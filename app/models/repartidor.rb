@@ -1,10 +1,10 @@
 class Repartidor
-  attr_accessor :nombre_usuario, :nombre, :created_on, :updated_on, :id
+  attr_accessor :nombre_usuario, :nombre, :created_on, :updated_on, :id, :esta_libre
 
   def initialize(nombre_usuario, nombre)
     @nombre_usuario = nombre_usuario
     @nombre = nombre
-
+    @esta_libre = true
     validar_repartidor!
   end
 
@@ -18,5 +18,9 @@ class Repartidor
 
   def nombre_usuario_vacio?
     (@nombre_usuario.nil? || @nombre_usuario == '')
+  end
+
+  def esta_ocupado
+    @esta_libre = false
   end
 end

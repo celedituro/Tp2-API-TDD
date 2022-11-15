@@ -29,12 +29,12 @@ module WebTemplate
       private
 
       def atributos_pedido(pedido)
-        {nombre_menu: pedido.nombre_menu, id_pedido: pedido.id, estado: pedido.estado}
+        if !pedido.repartidor.nil?
+          {nombre_menu: pedido.nombre_menu, id_pedido: pedido.id, estado: pedido.estado, nombre_repartidor: pedido.nombre_repartidor}
+        else
+          {nombre_menu: pedido.nombre_menu, id_pedido: pedido.id, estado: pedido.estado}
+        end
       end
-
-      # def user_mapper
-      #  Persistence::Mappers::UserMapper.new
-      # end
     end
 
     helpers PedidoHelper

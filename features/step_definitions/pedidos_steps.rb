@@ -39,6 +39,8 @@ end
 
 Entonces(/^el estado es "([^"]*)"$/) do |estado|
   datos_response = JSON.parse(@response.body)
+  p datos_response
+  @repartidor = datos_response['nombre_repartidor']
   expect(datos_response['estado']).to eq(estado)
 end
 
@@ -62,22 +64,6 @@ Entonces(/^recibo \[\{id_pedido: (\d+), id: (\d+), nombre:"([^"]*)", precio: (\d
 end
 # rubocop: enable Metrics/ParameterLists, Layout/LineLength, Metrics/AbcSize
 
-Dado(/^el id_repartidor asociado al pedido es "([^"]*)"$/) do |id_repartidor|
-  pending
-end
-
-Cuando(/^se buscan los repartidores libres$/) do
-  pending
-end
-
-Cuando(/^el repartidor con id_repartidor (\d+) está libre$/) do |id_repartidor|
-  pending
-end
-
-Entonces(/^el id_repartidor del pedido es (\d+)$/) do |id_repartidor|
-  pending
-end
-
-Entonces(/^el estado del pedido pasa a ser "([^"]*)"$/) do |estado|
-  pending
+Entonces(/^el repartidor es "([^"]*)"$/) do |nombre_repartidor|
+  expect(@repartidor).to eq(nombre_repartidor)
 end
