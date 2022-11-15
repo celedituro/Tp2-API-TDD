@@ -40,7 +40,7 @@ class Pedido
   end
 
   def actualizar
-    @estado = @estado.actualizar
+    @estado = @estado.actualizar(self)
   rescue PedidoYaEntregado
     raise PedidoYaEntregado
   end
@@ -57,11 +57,9 @@ class Pedido
     @calificacion = calificacion
   end
 
-  def asignar_repartidor(repartidor)
+  # TODO: refactor/consultar
+  def asignar_repartidor(buscador)
+    repartidor = buscador.buscar
     @repartidor = repartidor
-  end
-
-  def nombre_repartidor
-    @repartidor.nombre_usuario
   end
 end

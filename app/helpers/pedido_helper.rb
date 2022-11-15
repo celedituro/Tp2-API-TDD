@@ -30,7 +30,7 @@ module WebTemplate
 
       def atributos_pedido(pedido)
         if !pedido.repartidor.nil?
-          {nombre_menu: pedido.nombre_menu, id_pedido: pedido.id, estado: pedido.estado, nombre_repartidor: pedido.nombre_repartidor}
+          {nombre_menu: pedido.nombre_menu, id_pedido: pedido.id, estado: pedido.estado, nombre_repartidor: pedido.repartidor.nombre_usuario}
         else
           {nombre_menu: pedido.nombre_menu, id_pedido: pedido.id, estado: pedido.estado}
         end

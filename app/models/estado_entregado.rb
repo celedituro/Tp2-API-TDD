@@ -1,5 +1,5 @@
 class EstadoEntregado
-  def actualizar
+  def actualizar(_pedido)
     raise PedidoYaEntregado
   end
 

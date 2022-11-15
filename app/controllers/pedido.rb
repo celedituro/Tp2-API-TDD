@@ -32,16 +32,6 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
   patch :update, :map => '/pedido' do
     begin
       pedido = pedido_repository.buscar_por_id(params[:id])
-      if pedido.estado == 'en preparación' || pedido.estado == 'en preparación'
-        repartidores = repartidor_repository.buscar_repartidores_libres
-        if repartidores != []
-          repartidor = repartidores[0]
-          repartidor.esta_ocupado
-          pedido.asignar_repartidor(repartidor)
-          pedido_repository.actualizar(pedido)
-          repartidor_repository.actualizar(repartidor)
-        end
-      end
       pedido.actualizar
       pedido_repository.actualizar(pedido)
 

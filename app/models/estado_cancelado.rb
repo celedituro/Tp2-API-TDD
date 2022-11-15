@@ -4,7 +4,7 @@ class EstadoCancelado
   end
 
   # TO-DO lanzar excepcion
-  def actualizar
+  def actualizar(_pedido)
     EstadoCancelado.new
   end
 end

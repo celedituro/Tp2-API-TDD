@@ -1,5 +1,5 @@
 class EstadoRecibido
-  def actualizar
+  def actualizar(_pedido)
     EstadoEnPreparacion.new
   end
 

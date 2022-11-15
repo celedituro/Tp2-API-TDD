@@ -4,36 +4,28 @@ module Persistence
       self.table_name = :pedidos
       self.model_class = 'Pedido'
 
+      # rubocop:disable Metrics/AbcSize
       def cargar_objeto(a_hash)
+        usuario_repository = Persistence::Repositories::UsuarioRepository.new
+        menus_repository = Persistence::Repositories::MenusRepository.new
+
+        factory = EstadoFactory.new
+
+        usuario = usuario_repository.buscar_por_id(a_hash[:id_usuario])
+        menu = menus_repository.buscar_por_id(a_hash[:id_menu])
+        estado = factory.get_estado(a_hash[:estado])
+        pedido = Pedido.new(usuario, menu, estado)
+        pedido.id = a_hash[:id]
         begin
-          usuario_repository = Persistence::Repositories::UsuarioRepository.new
-          menus_repository = Persistence::Repositories::MenusRepository.new
           repartidor_repository = Persistence::Repositories::RepartidorRepository.new
-          factory = EstadoFactory.new
-
-          usuario = usuario_repository.buscar_por_id(a_hash[:id_usuario])
-          menu = menus_repository.buscar_por_id(a_hash[:id_menu])
           repartidor = repartidor_repository.buscar_por_id(a_hash[:nombre_repartidor])
-
-          estado = factory.get_estado(a_hash[:estado])
-          pedido = Pedido.new(usuario, menu, estado)
-          pedido.asignar_repartidor(repartidor)
-          pedido.id = a_hash[:id]
+          pedido.repartidor = repartidor
           pedido
         rescue ObjectNotFound
-          usuario_repository = Persistence::Repositories::UsuarioRepository.new
-          menus_repository = Persistence::Repositories::MenusRepository.new
-          factory = EstadoFactory.new
-
-          usuario = usuario_repository.buscar_por_id(a_hash[:id_usuario])
-          menu = menus_repository.buscar_por_id(a_hash[:id_menu])
-
-          estado = factory.get_estado(a_hash[:estado])
-          pedido = Pedido.new(usuario, menu, estado)
-          pedido.id = a_hash[:id]
           pedido
         end
       end
+      # rubocop:enable Metrics/AbcSize
 
       def buscar_pedidos_de(id_usuario)
         cargar_coleccion dataset.where(id_usuario_column => id_usuario)
@@ -49,7 +41,7 @@ module Persistence
           id_menu: pedido.id_menu,
           estado: pedido.estado,
           calificacion: pedido.calificacion,
-          nombre_repartidor: pedido.repartidor.nil? ? nil : pedido.nombre_repartidor
+          nombre_repartidor: pedido.repartidor.nil? ? nil : pedido.repartidor.nombre_usuario
         }
       end
     end

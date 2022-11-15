@@ -1,5 +1,5 @@
 class EstadoEnCamino
-  def actualizar
+  def actualizar(_pedido)
     EstadoEntregado.new
   end
 

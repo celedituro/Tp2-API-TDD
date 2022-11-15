@@ -1,5 +1,6 @@
 class EstadoEnPreparacion
-  def actualizar
+  def actualizar(pedido)
+    pedido.asignar_repartidor(BuscadorRepartidores.new)
     EstadoEnCamino.new
   end
 
