@@ -6,6 +6,10 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
       pedido_to_json pedido
     rescue UsuarioNoRegistrado
       status 401
+      {message: 'Unauthorized'}.to_json
+    rescue MenuInvalido
+      status 400
+      {message: 'Bad Request'}.to_json
     end
   end
 

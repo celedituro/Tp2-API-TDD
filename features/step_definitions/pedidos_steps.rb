@@ -12,6 +12,10 @@ Entonces('se crea un nuevo pedido') do
   @response = Faraday.post("#{BASE_URL}#{@comando}", @request, header)
 end
 
+Cuando('realizo un nuevo pedido') do
+  @response = Faraday.post("#{BASE_URL}#{@comando}", @request, header)
+end
+
 Entonces(/^recibo con nombre_menu: "([^"]*)"$/) do |nombre_menu|
   datos_response = JSON.parse(@response.body)
   expect(datos_response['nombre_menu']).to eq(nombre_menu)
