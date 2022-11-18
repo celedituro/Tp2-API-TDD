@@ -26,6 +26,7 @@ describe Persistence::Repositories::PedidoRepository do
       repartidor_repository.guardar(repartidor)
       @nuevo_pedido.repartidor = repartidor
       pedido_repository.actualizar(@nuevo_pedido)
+      
 
       expect(pedido_repository.buscar_por_id(@pedido_id).repartidor.nombre_usuario).to eq('Paulito')
     end
