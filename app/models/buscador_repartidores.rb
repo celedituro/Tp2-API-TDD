@@ -6,6 +6,7 @@ class BuscadorRepartidores
 
     repartidor = repartidores[0]
     repartidor.esta_ocupado
+
     repartidor_repository.actualizar(repartidor)
     repartidor
   end

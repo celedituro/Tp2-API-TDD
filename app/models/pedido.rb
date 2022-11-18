@@ -1,6 +1,6 @@
 class Pedido
-  attr_reader :responsable, :menu, :updated_on, :created_on, :calificacion
-  attr_accessor :id, :repartidor
+  attr_reader :responsable, :menu, :updated_on
+  attr_accessor :id, :repartidor, :created_on, :calificacion
 
   def initialize(responsable, menu, estado)
     @responsable = responsable

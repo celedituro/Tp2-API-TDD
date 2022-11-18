@@ -23,13 +23,16 @@ module Persistence
       protected
 
       def cargar_objeto(a_hash)
-        Repartidor.new(a_hash[:nombre_usuario], a_hash[:nombre])
+        repartidor = Repartidor.new(a_hash[:nombre_usuario], a_hash[:nombre])
+        repartidor.esta_libre = a_hash[:esta_libre]
+        repartidor
       end
 
       def changeset(repartidor)
         {
           nombre_usuario: repartidor.nombre_usuario,
-          nombre: repartidor.nombre
+          nombre: repartidor.nombre,
+          esta_libre: repartidor.esta_libre
         }
       end
     end

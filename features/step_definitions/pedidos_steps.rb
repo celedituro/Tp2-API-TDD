@@ -43,7 +43,6 @@ end
 
 Entonces(/^el estado es "([^"]*)"$/) do |estado|
   datos_response = JSON.parse(@response.body)
-  p datos_response
   @repartidor = datos_response['nombre_repartidor']
   expect(datos_response['estado']).to eq(estado)
 end

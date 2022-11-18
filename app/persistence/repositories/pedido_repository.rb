@@ -20,6 +20,7 @@ module Persistence
           repartidor_repository = Persistence::Repositories::RepartidorRepository.new
           repartidor = repartidor_repository.buscar_por_id(a_hash[:nombre_repartidor])
           pedido.repartidor = repartidor
+          pedido.calificacion = a_hash[:calificacion]
           pedido
         rescue ObjectNotFound
           pedido
@@ -29,6 +30,14 @@ module Persistence
 
       def buscar_pedidos_de(id_usuario)
         cargar_coleccion dataset.where(id_usuario_column => id_usuario)
+      end
+
+      def buscar_pedidos_de_repartidor(nombre_usuario)
+        cargar_coleccion dataset.where(repartidor_column => nombre_usuario)
+      end
+
+      def repartidor_column
+        Sequel[self.class.table_name][:nombre_repartidor]
       end
 
       def id_usuario_column

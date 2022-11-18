@@ -22,6 +22,15 @@ module WebTemplate
         lista_de_pedidos.to_json
       end
 
+      def comisiones_to_json(pedidos)
+        lista_de_pedidos = []
+        calculador = ComisionesCalculador.new(ServicioTiempo.new)
+        pedidos.each do |pedido|
+          lista_de_pedidos.append({id_pedido: pedido.id, comision: calculador.calcular(pedido)}) unless pedido.calificacion.nil?
+        end
+        lista_de_pedidos.to_json
+      end
+
       def calificacion_pedido_to_json(pedido)
         {id_pedido: pedido.id, calificacion: pedido.calificacion}.to_json
       end
