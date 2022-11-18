@@ -16,6 +16,7 @@ module Persistence
         estado = factory.get_estado(a_hash[:estado])
         pedido = Pedido.new(usuario, menu, estado)
         pedido.id = a_hash[:id]
+        pedido.created_on = a_hash[:created_on]
         begin
           repartidor_repository = Persistence::Repositories::RepartidorRepository.new
           repartidor = repartidor_repository.buscar_por_id(a_hash[:nombre_repartidor])
@@ -50,7 +51,8 @@ module Persistence
           id_menu: pedido.id_menu,
           estado: pedido.estado,
           calificacion: pedido.calificacion,
-          nombre_repartidor: pedido.repartidor.nil? ? nil : pedido.repartidor.nombre_usuario
+          nombre_repartidor: pedido.repartidor.nil? ? nil : pedido.repartidor.nombre_usuario,
+          created_on: pedido.created_on
         }
       end
     end
