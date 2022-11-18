@@ -42,6 +42,25 @@ describe Persistence::Repositories::PedidoRepository do
 
       expect(pedido.responsable.nombre).to eq(@nuevo_pedido.responsable.nombre)
     end
+
+    it 'debe buscar pedidos de un usuario' do
+      pedidos = pedido_repository.buscar_pedidos_de(@nuevo_pedido.responsable.id)
+
+      pedidos.each do |pedido|
+        expect(pedido.responsable.nombre).to eq(@nuevo_pedido.responsable.nombre)
+      end
+    end
+
+    it 'debe buscar pedidos de un repartidor' do
+      repartidor = Repartidor.new('Paulito', 'Paul')
+      repartidor_repository.guardar(repartidor)
+      @nuevo_pedido.repartidor = repartidor
+      pedidos = pedido_repository.buscar_pedidos_de_repartidor(@nuevo_pedido.repartidor.nombre_usuario)
+
+      pedidos.each do |pedido|
+        expect(pedido.repartidor.nombre_usuario).to eq(@nuevo_pedido.repartidor.nombre_usuario)
+      end
+    end
   end
 
   it 'debe lanzar un error cuando no encuentra un pedido por id' do
