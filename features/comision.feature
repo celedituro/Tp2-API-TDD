@@ -27,14 +27,33 @@ Escenario: Calcular comisión de un repartidor que realizó 1 pedido con lluvia
   Cuando uso el endpoint a "/comisiones" con {nombre_usuario: "fulanomengano"}
   Entonces recibo {id_pedido: 1, comision: "6.0"}
 
-Escenario: Calcular comisión de un repartidor con calificación 1
+Escenario: Calcular comisión de un repartidor con calificación 1 sin lluvia
   Dado uso el endpoint a "/calificacion" con {id_usuario: "123" , id_pedido: 1, calificacion: 1}
   Y sin lluvia
   Cuando uso el endpoint a "/comisiones" con {nombre_usuario: "fulanomengano"}
   Entonces recibo {id_pedido: 1, comision: "3.0"}
 
-Escenario: Calcular comisión de un repartidor con calificación 5
+Escenario: Calcular comisión de un repartidor con calificación 5 sin lluvia
   Dado uso el endpoint a "/calificacion" con {id_usuario: "123" , id_pedido: 1, calificacion: 5}
   Y sin lluvia
   Cuando uso el endpoint a "/comisiones" con {nombre_usuario: "fulanomengano"}
   Entonces recibo {id_pedido: 1, comision: "7.0"}
+
+Escenario: Calcular comisión de un repartidor con calificación 1 con lluvia
+  Dado uso el endpoint a "/calificacion" con {id_usuario: "123" , id_pedido: 1, calificacion: 1}
+  Y con lluvia
+  Cuando uso el endpoint a "/comisiones" con {nombre_usuario: "fulanomengano"}
+  Entonces recibo {id_pedido: 1, comision: "4.0"}
+
+Escenario: Calcular comisión de un repartidor con calificación 5 con lluvia
+  Dado uso el endpoint a "/calificacion" con {id_usuario: "123" , id_pedido: 1, calificacion: 5}
+  Y con lluvia
+  Cuando uso el endpoint a "/comisiones" con {nombre_usuario: "fulanomengano"}
+  Entonces recibo {id_pedido: 1, comision: "8.0"}
+
+Escenario: Calcular comisión de un repartidor con calificación 2 con lluvia
+  Dado uso el endpoint a "/calificacion" con {id_usuario: "123" , id_pedido: 1, calificacion: 2}
+  Y con lluvia
+  Cuando uso el endpoint a "/comisiones" con {nombre_usuario: "fulanomengano"}
+  Entonces recibo {id_pedido: 1, comision: "6.0"}
+
