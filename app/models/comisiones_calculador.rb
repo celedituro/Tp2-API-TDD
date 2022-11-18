@@ -10,7 +10,7 @@ class ComisionesCalculador
     fecha_creacion = pedido.created_on
     adicional = @servicio_tiempo.obtener_tiempo(fecha_creacion)
 
-    total = precio * @porcentaje[calificacion] + adicional
-    total.round()
+    total = precio * @porcentaje[calificacion] + precio * adicional
+    total.round(2)
   end
 end
