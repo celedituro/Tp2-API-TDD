@@ -67,7 +67,10 @@ def crear_usuario_url
   "#{BASE_URL}/registrar"
 end
 
-
 After do |_scenario|
+  Faraday.post(reset_url)
+end
+
+Before do |_scenario|
   Faraday.post(reset_url)
 end
