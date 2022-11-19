@@ -1,10 +1,11 @@
 class Repartidor
-  attr_accessor :nombre_usuario, :nombre, :created_on, :updated_on, :id, :esta_libre
+  attr_accessor :nombre_usuario, :nombre, :created_on, :updated_on, :id, :esta_libre, :mochila
 
   def initialize(nombre_usuario, nombre)
     @nombre_usuario = nombre_usuario
     @nombre = nombre
     @esta_libre = true
+    @mochila = Mochila.new
     validar_repartidor!
   end
 

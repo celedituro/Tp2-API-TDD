@@ -25,6 +25,7 @@ module Persistence
       def cargar_objeto(a_hash)
         repartidor = Repartidor.new(a_hash[:nombre_usuario], a_hash[:nombre])
         repartidor.esta_libre = a_hash[:esta_libre]
+        repartidor.mochila = Mochila.new(a_hash[:capacidad_mochila])
         repartidor
       end
 
@@ -32,7 +33,8 @@ module Persistence
         {
           nombre_usuario: repartidor.nombre_usuario,
           nombre: repartidor.nombre,
-          esta_libre: repartidor.esta_libre
+          esta_libre: repartidor.esta_libre,
+          capacidad_mochila: repartidor.mochila.capacidad
         }
       end
     end

@@ -4,8 +4,8 @@ class Mochila
 
   attr_reader :capacidad
 
-  def initialize
-    @capacidad = CAPACIDAD_MAXIMA
+  def initialize(capacidad = CAPACIDAD_MAXIMA)
+    @capacidad = capacidad
   end
 
   def guardar(menu)
