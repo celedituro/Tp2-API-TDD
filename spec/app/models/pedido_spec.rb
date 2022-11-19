@@ -102,4 +102,11 @@ describe Pedido do
     pedido = described_class.new(usuario,menu,EstadoEnPreparacion.new)
     expect {pedido.calificar(3)}.to raise_error(CalificacionInvalida)
   end
+
+  it 'su calificacion es invalida cuando se califica un pedido en camino' do
+    menu = Menu.new(4,'Menu individual', 200)
+    usuario = Usuario.new('nombre','direccion','123456',1)
+    pedido = described_class.new(usuario,menu,EstadoEnCamino.new)
+    expect {pedido.calificar(3)}.to raise_error(CalificacionInvalida)
+  end
 end
