@@ -5,11 +5,12 @@ Característica: Calificar repartidores
   Quiero calificar al repartidor de mi pedido
 
 Antecedentes:
-Dado que soy un usuario registrado
+  Dado que soy un usuario registrado
 
 Escenario: Cliente califica al repartidor de un pedido entregado
-  Dado creo un pedido con menu individual
-  Y se crea un nuevo pedido
+  Dado que uso el endpoint "/repartidor" con los datos {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como request body
+  Y registro un repartidor
+  Y creo un pedido con menu individual
   Y cambio el estado del pedido
   Y cambio el estado del pedido
   Y cambio el estado del pedido

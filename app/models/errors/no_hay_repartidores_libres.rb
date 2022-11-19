@@ -1,0 +1,2 @@
+class NoHayRepartidoresLibres < StandardError
+end

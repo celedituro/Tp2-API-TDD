@@ -24,11 +24,10 @@ Escenario: El pedido pasa en preparación a en camino
   Y pregunto por el estado del pedido
   Entonces el estado es "en camino"
 
-@wip
 Escenario: El pedido pasa del estado en preparación al estado en espera
   Dado que el estado del pedido es "recibido"
   Y cambio el estado del pedido
-  Y que el estado del pedido es "en preparacion"
+  Y que el estado del pedido es "en preparación"
   Cuando cambio el estado del pedido
   Entonces que el estado del pedido es "en espera"
 
@@ -36,7 +35,7 @@ Escenario: El pedido pasa del estado en preparación al estado en espera
 Escenario: El pedido pasa en espera a en camino
   Dado que el estado del pedido es "recibido"
   Y cambio el estado del pedido
-  Y que el estado del pedido es "en preparacion"
+  Y que el estado del pedido es "en preparación"
   Y cambio el estado del pedido
   Y que el estado del pedido es "en espera"
   Y que uso el endpoint "/repartidor" con los datos {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como request body

@@ -28,12 +28,24 @@ describe Pedido do
     expect(pedido.estado).to eq('en preparación')
   end
 
-  it 'su estado es en camino cuando lo actualizo por segunda vez' do
+  it 'su estado es en camino cuando lo actualizo por segunda vez y hay repartidor libre' do
+    menu = Menu.new(4,'Menu individual', 200)
+    usuario = Usuario.new('nombre','direccion','123456',1)
+    pedido = described_class.new(usuario,menu,EstadoEnPreparacion.new)
+
+    repartidor_repository = Persistence::Repositories::RepartidorRepository.new
+    repartidor_repository.guardar(Repartidor.new('fulano','Fulano Mengano'))
+
+    pedido.actualizar
+    expect(pedido.estado).to eq('en camino')
+  end
+
+  it 'su estado es en camino cuando lo actualizo por segunda vez y no hay repartidor libre' do
     menu = Menu.new(4,'Menu individual', 200)
     usuario = Usuario.new('nombre','direccion','123456',1)
     pedido = described_class.new(usuario,menu,EstadoEnPreparacion.new)
     pedido.actualizar
-    expect(pedido.estado).to eq('en camino')
+    expect(pedido.estado).to eq('en espera')
   end
 
   it 'su estado es entregado cuando lo actualizo estando en camino' do

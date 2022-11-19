@@ -30,4 +30,10 @@ describe EstadoFactory do
 
       expect(factory.get_estado('cancelado')).to be_an_instance_of(EstadoCancelado)
     end
+
+    it 'debe crear una instancia de EstadoEnEspera al pasarle en espera como parametro' do
+      factory = described_class.new()
+
+      expect(factory.get_estado('en espera')).to be_an_instance_of(EstadoEnEspera)
+    end
 end
