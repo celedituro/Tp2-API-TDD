@@ -70,3 +70,9 @@ end
 Entonces(/^el repartidor es "([^"]*)"$/) do |nombre_repartidor|
   expect(@repartidor).to eq(nombre_repartidor)
 end
+
+When(/^creo un pedido con menu familiar$/) do
+  @request = {id_usuario: '1', id_menu: 3}.to_json
+  @response = Faraday.post("#{BASE_URL}/pedido", @request, header)
+  @pedido_id = JSON.parse(@response.body)['id_pedido']
+end

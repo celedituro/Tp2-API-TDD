@@ -65,7 +65,7 @@ class Pedido
 
   # TODO: refactor/consultar
   def asignar_repartidor(buscador)
-    repartidor = buscador.buscar
+    repartidor = buscador.buscar(self)
     @repartidor = repartidor
   rescue NoHayRepartidoresLibres
     raise NoHayRepartidoresLibres

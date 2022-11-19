@@ -17,6 +17,6 @@ class Mochila
   private
 
   def hay_espacio_para?(menu)
-    OCUPACION_MENUES[menu.nombre] < @capacidad
+    OCUPACION_MENUES[menu.nombre] <= @capacidad
   end
 end

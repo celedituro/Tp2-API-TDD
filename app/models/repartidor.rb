@@ -9,6 +9,13 @@ class Repartidor
     validar_repartidor!
   end
 
+  def guardar(pedido)
+    @mochila.guardar(pedido.menu)
+    pedido
+  rescue NoHayEspacio
+    raise NoHayEspacio
+  end
+
   def validar_repartidor!
     raise RepartidorInvalido, 'repartidor invalido' if nombre_usuario_vacio? || nombre_vacio?
   end
