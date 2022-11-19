@@ -53,10 +53,15 @@ class Pedido
     @estado.nombre
   end
 
-  def calificar(calificacion)
-    raise CalificacionInvalida if @estado.nombre == 'recibido' || @estado.nombre == 'en preparación' || @estado.nombre == 'en camino'
-
+  def calificar_pedido(calificacion)
     @calificacion = calificacion
+  end
+  def calificar(calificacion)
+    begin
+      @estado.intentar_calificar(self, calificacion)
+    rescue CalificacionInvalida
+      raise CalificacionInvalida
+    end
   end
 
   # TODO: refactor/consultar

@@ -1,4 +1,7 @@
 class EstadoCancelado
+  def intentar_calificar(pedido, calificacion)
+    pedido.calificar_pedido(calificacion)
+  end
   def nombre
     'cancelado'
   end

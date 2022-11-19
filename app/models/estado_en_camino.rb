@@ -3,6 +3,9 @@ class EstadoEnCamino
     EstadoEntregado.new
   end
 
+  def intentar_calificar(_pedido, _calificacion)
+    raise CalificacionInvalida
+  end
   def nombre
     'en camino'
   end

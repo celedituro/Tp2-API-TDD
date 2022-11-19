@@ -4,6 +4,10 @@ class EstadoEnPreparacion
     EstadoEnCamino.new
   end
 
+  def intentar_calificar(_pedido, _calificacion)
+    raise CalificacionInvalida
+  end
+
   def nombre
     'en preparación'
   end
