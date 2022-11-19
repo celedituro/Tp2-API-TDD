@@ -55,12 +55,12 @@ Comience la app usando el comando `bundle exec padrino start -h 0.0.0.0` y check
 
 ### Migraciones
 
-RACK_ENV=test bundle exec rake db:migrate db:seed
+RACK_ENV=test bundle exec rake db:migrate db:seed\
 RACK_ENV=development bundle exec rake db:migrate db:seed
 
 
 
-Para correr los test de la aplicación, dentro del contenedor pueed ejecutar el script `sh test.sh`
+Para correr los test de la aplicación, dentro del contenedor puede ejecutar el script `sh test.sh`
 
 # Test de Aceptación
 

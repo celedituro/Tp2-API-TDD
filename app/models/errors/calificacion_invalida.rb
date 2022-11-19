@@ -1,0 +1,3 @@
+class CalificacionInvalida < StandardError
+
+end

@@ -70,3 +70,7 @@ end
 Entonces(/^el repartidor es "([^"]*)"$/) do |nombre_repartidor|
   expect(@repartidor).to eq(nombre_repartidor)
 end
+
+When(/^hay repartidores libres$/) do
+  pending
+end
