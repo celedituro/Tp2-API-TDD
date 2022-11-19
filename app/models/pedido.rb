@@ -54,7 +54,7 @@ class Pedido
   end
 
   def calificar(calificacion)
-    raise CalificacionInvalida if @estado.nombre == 'recibido'
+    raise CalificacionInvalida if @estado.nombre == 'recibido' || @estado.nombre == 'en preparación'
     @calificacion = calificacion
   end
 
