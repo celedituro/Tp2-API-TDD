@@ -1,0 +1,2 @@
+class NoHayEspacio < StandardError
+end
