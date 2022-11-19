@@ -23,22 +23,6 @@ class Pedido
     (@menu.nil? || @menu == '')
   end
 
-  def nombre_menu
-    @menu.nombre
-  end
-
-  def precio_menu
-    @menu.precio
-  end
-
-  def id_menu
-    @menu.id
-  end
-
-  def id_usuario
-    @responsable.id
-  end
-
   def actualizar
     @estado = @estado.actualizar(self)
   rescue PedidoYaEntregado

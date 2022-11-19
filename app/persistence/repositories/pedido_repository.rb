@@ -47,8 +47,8 @@ module Persistence
 
       def changeset(pedido)
         {
-          id_usuario: pedido.id_usuario,
-          id_menu: pedido.id_menu,
+          id_usuario: pedido.responsable.id,
+          id_menu: pedido.menu.id,
           estado: pedido.estado,
           calificacion: pedido.calificacion,
           nombre_repartidor: pedido.repartidor.nil? ? nil : pedido.repartidor.nombre_usuario,
