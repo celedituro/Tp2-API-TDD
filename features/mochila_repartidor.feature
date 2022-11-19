@@ -16,6 +16,7 @@ Quiero tener una capacidad máxima para llevar pedidos
     Y el repartidor es "fulanomengano"
     Y la capacidad libre de la mochila es 2 para "fulanomengano"
 
+  @local
   Escenario: Repartidor con espacio en la mochila
     Dado creo un pedido con menu individual
     Y cambio el estado del pedido
@@ -24,6 +25,7 @@ Quiero tener una capacidad máxima para llevar pedidos
     Y el repartidor es "fulanomengano"
     Y la capacidad libre de la mochila es 1 para "fulanomengano"
 
+  @local
   Escenario: Repartidor sin espacio en la mochila
     Dado creo un pedido con menu familiar
     Y cambio el estado del pedido
