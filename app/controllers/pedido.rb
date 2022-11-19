@@ -19,7 +19,8 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
       status 200
       pedido_to_json pedido
     rescue ObjectNotFound
-      {nombre_menu: '', id_pedido: 0, estado: ''}.to_json
+      status 404
+      {message: 'Not Found'}.to_json
     end
   end
 

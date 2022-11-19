@@ -76,3 +76,7 @@ When(/^creo un pedido con menu familiar$/) do
   @response = Faraday.post("#{BASE_URL}/pedido", @request, header)
   @pedido_id = JSON.parse(@response.body)['id_pedido']
 end
+
+Dado(/^que no realizo un pedido$/) do
+  @pedido_id = 20
+end

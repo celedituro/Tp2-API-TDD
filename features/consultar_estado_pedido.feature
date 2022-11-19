@@ -25,3 +25,13 @@
     Cuando cambio el estado del pedido
     Y uso el endpoint "/pedido" para consultar el estado del pedido
     Y recibo {nombre_menu: "Menu individual", id_pedido: 2, estado: "en preparación"}
+
+  Escenario: Cliente consulta un pedido no realizado con código http
+    Dado que no realizo un pedido
+    Cuando uso el endpoint "/pedido" para consultar el estado del pedido
+    Entonces recibo un código http "404"
+
+  Escenario: Cliente consulta un pedido no realizado
+    Dado que no realizo un pedido
+    Cuando uso el endpoint "/pedido" para consultar el estado del pedido
+    Entonces recibo un mensaje de error del tipo "Not Found"
