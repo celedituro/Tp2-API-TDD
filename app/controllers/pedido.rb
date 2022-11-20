@@ -63,7 +63,7 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
     begin
       validar_calificacion(parametros_pedido)
       pedido = pedido_repository.buscar_por_id(parametros_pedido[:id_pedido])
-      pedido.calificar(parametros_pedido[:calificacion])
+      pedido.calificar(Integer(parametros_pedido[:calificacion]))
       pedido_repository.actualizar(pedido)
 
       status 200
