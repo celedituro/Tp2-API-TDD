@@ -1,0 +1,3 @@
+class CancelarPedidoError < StandardError
+
+end

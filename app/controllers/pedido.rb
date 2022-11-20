@@ -51,12 +51,17 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
   end
 
   patch :update, :map => '/cancelacion' do
-    pedido = pedido_repository.buscar_por_id(params[:id])
-    pedido.cancelar
-    pedido_repository.actualizar(pedido)
+    begin
+      pedido = pedido_repository.buscar_por_id(params[:id])
+      pedido.cancelar
+      pedido_repository.actualizar(pedido)
 
-    status 200
-    pedido_to_json pedido
+      status 200
+      pedido_to_json pedido
+    rescue CancelarPedidoError
+      status 401
+      {message: 'Unauthorized'}.to_json
+    end
   end
 
   patch :update, :map => '/calificacion' do

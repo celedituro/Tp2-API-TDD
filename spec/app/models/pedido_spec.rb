@@ -72,17 +72,24 @@ describe Pedido do
     expect(pedido.estado).to eq('cancelado')
   end
 
-  xit 'su estado es cancelado cuando lo cancelo estando en camino' do
+  it 'su estado es invalido cuando lo cancelo estando en camino' do
     menu = Menu.new(4,'Menu individual', 200)
     usuario = Usuario.new('nombre','direccion','123456',1)
     pedido = described_class.new(usuario,menu,EstadoEnCamino.new)
     expect { pedido.cancelar }.to raise_error(CancelarPedidoError)
   end
 
-  xit 'su estado es cancelado cuando lo cancelo estando entregado' do
+  it 'su estado es invalido cuando lo cancelo estando entregado' do
     menu = Menu.new(4,'Menu individual', 200)
     usuario = Usuario.new('nombre','direccion','123456',1)
     pedido = described_class.new(usuario,menu,EstadoEntregado.new)
+    expect { pedido.cancelar }.to raise_error(CancelarPedidoError)
+  end
+
+  it 'su estado es invalidoo cuando lo cancelo estando en espera' do
+    menu = Menu.new(4,'Menu individual', 200)
+    usuario = Usuario.new('nombre','direccion','123456',1)
+    pedido = described_class.new(usuario,menu,EstadoEnEspera.new)
     expect { pedido.cancelar }.to raise_error(CancelarPedidoError)
   end
 
