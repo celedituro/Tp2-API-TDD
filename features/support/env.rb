@@ -67,6 +67,10 @@ def crear_usuario_url
   "#{BASE_URL}/registrar"
 end
 
+def crear_repartidor_url
+  "#{BASE_URL}/repartidor"
+end
+
 After do |_scenario|
   Faraday.post(reset_url)
 end

@@ -3,6 +3,11 @@ When(/^que uso el endpoint "([^"]*)" con los datos \{nombre_usuario:"([^"]*)", n
   @request = {nombre_usuario: nombre_usuario, nombre: nombre}.to_json
 end
 
+Dado(/^que existe un repartidor con usuario "([^"]*)"$/) do |nombre_usuario|
+  @request = {nombre_usuario: nombre_usuario, nombre: 'Pepe'}.to_json
+  @response = Faraday.post(crear_repartidor_url, @request, header)
+end
+
 When(/^que uso el endpoint "([^"]*)" con los datos \{nombre_usuario:"([^"]*)"\} como request body$/) do |comando, nombre_usuario|
   @comando = comando
   @request = {nombre_usuario: nombre_usuario}.to_json

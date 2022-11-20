@@ -4,6 +4,14 @@ module Persistence
       self.table_name = :repartidores
       self.model_class = 'Repartidor'
 
+      def insertar(un_registro)
+        id = dataset.insert(insertar_changeset(un_registro))
+        un_registro.id = id
+        un_registro
+      rescue Sequel::UniqueConstraintViolation
+        raise Duplicado
+      end
+
       def buscar_repartidores_libres
         cargar_coleccion dataset.where(esta_libre_repartidor_column => true)
       end

@@ -24,3 +24,15 @@ Escenario: Registración con campos faltantes
   Dado que uso el endpoint "/repartidor" con los datos {nombre_usuario:"fulanomengano"} como request body
   Cuando registro un repartidor
   Entonces recibo un mensaje de error del tipo "Bad Request"
+
+Escenario: Registración con nombre_usuario existente con codigo http
+  Dado que existe un repartidor con usuario "pepepepito"
+  Y que uso el endpoint "/repartidor" con los datos {nombre_usuario:"pepepepito", nombre: "Fulano Mengano"} como request body 
+  Cuando registro un repartidor
+  Entonces recibo un código http "409"
+
+Escenario: Registración con nombre_usuario existente 
+  Dado que existe un repartidor con usuario "pepepepito"
+  Y que uso el endpoint "/repartidor" con los datos {nombre_usuario:"pepepepito", nombre: "Fulano Mengano"} como request body 
+  Cuando registro un repartidor
+  Entonces recibo un mensaje de error del tipo "Conflict"
