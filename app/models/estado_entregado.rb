@@ -13,8 +13,7 @@ class EstadoEntregado
     'entregado'
   end
 
-  # TO-DO lanzar excepcion
   def cancelar
-    EstadoCancelado.new
+    raise CancelarPedidoError
   end
 end

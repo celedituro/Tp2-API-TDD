@@ -9,4 +9,8 @@ class EstadoEnEspera
   rescue NoHayRepartidoresLibres
     EstadoEnEspera.new
   end
+
+  def cancelar
+    raise CancelarPedidoError
+  end
 end
