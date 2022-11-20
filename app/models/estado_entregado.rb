@@ -5,6 +5,8 @@ class EstadoEntregado
 
   def intentar_calificar(pedido, calificacion)
     pedido.calificar_pedido(calificacion)
+  rescue CalificacionRangoInvalido
+    raise CalificacionRangoInvalido
   end
 
   def nombre

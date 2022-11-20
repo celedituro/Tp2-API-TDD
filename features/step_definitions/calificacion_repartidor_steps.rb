@@ -10,7 +10,7 @@ When(/^recibo \{id_pedido: (\d+), calificacion: (\d+)\}$/) do |_id_pedido, calif
   expect(datos_response['calificacion']).to eq(calificacion)
 end
 
-When(/^uso el endpoint a "([^"]*)" con \{id_usuario: "([^"]*)" , id_pedido: (\d+)\}$/) do |comando, id_usuario, id_pedido|
+When(/^uso el endpoint a "([^"]*)" con \{id_usuario: "([^"]*)" , id_pedido: (\d+)\}$/) do |comando, id_usuario, _id_pedido|
   @comando = comando
   @request = {id_usuario: id_usuario, id_pedido: @pedido_id}.to_json
   @response = Faraday.patch("#{BASE_URL}#{@comando}", @request, header)

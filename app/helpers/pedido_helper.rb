@@ -45,7 +45,6 @@ module WebTemplate
       def atributos_pedido(pedido)
         {nombre_menu: pedido.menu.nombre, id_pedido: pedido.id, estado: pedido.estado, nombre_repartidor: pedido.repartidor.nil? ? 'No asignado' : pedido.repartidor.nombre_usuario}
       end
-
     end
 
     helpers PedidoHelper

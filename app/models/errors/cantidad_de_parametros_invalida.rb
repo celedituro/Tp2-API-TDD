@@ -1,3 +1,2 @@
 class CantidadDeParametrosInvalida < StandardError
-
 end

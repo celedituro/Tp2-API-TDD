@@ -2,6 +2,8 @@ class Pedido
   attr_reader :responsable, :menu, :updated_on
   attr_accessor :id, :repartidor, :created_on, :calificacion
 
+  RANGO_CALIFICACION_VALIDO = (1..5).freeze
+
   def initialize(responsable, menu, estado)
     @responsable = responsable
     @menu = menu
@@ -38,6 +40,8 @@ class Pedido
   end
 
   def calificar_pedido(calificacion)
+    raise CalificacionRangoInvalido unless RANGO_CALIFICACION_VALIDO.include?(calificacion)
+
     @calificacion = calificacion
   end
 
@@ -45,6 +49,8 @@ class Pedido
     @estado.intentar_calificar(self, calificacion)
   rescue CalificacionInvalida
     raise CalificacionInvalida
+  rescue CalificacionRangoInvalido
+    raise CalificacionRangoInvalido
   end
 
   # TODO: refactor/consultar

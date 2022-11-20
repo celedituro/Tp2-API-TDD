@@ -56,9 +56,10 @@ Escenario: Cliente califica al repartidor con campos faltantes
     Entonces recibo un código http "400"
     Y recibo un mensaje de error del tipo "Bad Request"
 
-@wip
 Escenario: Cliente califica al repartidor con calificacion invalida
-    Dado que soy un usuario registrado
+    Dado que uso el endpoint "/repartidor" con los datos {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como request body
+    Y registro un repartidor
+    Y que soy un usuario registrado
     Y creo un pedido con menu individual
     Y se crea un nuevo pedido
     Y cambio el estado del pedido

@@ -129,4 +129,18 @@ describe Pedido do
     pedido.calificar(3)
     expect(pedido.calificacion).to eq(3)
   end
+
+  it 'su calificacion es invalida cuando se califica un pedido con puntaje mayor a 5' do
+    menu = Menu.new(4,'Menu individual', 200)
+    usuario = Usuario.new('nombre','direccion','123456',1)
+    pedido = described_class.new(usuario,menu,EstadoEntregado.new)
+    expect {pedido.calificar(7)}.to raise_error(CalificacionRangoInvalido)
+  end
+
+  it 'su calificacion es invalida cuando se califica un pedido con puntaje menor a 1' do
+    menu = Menu.new(4,'Menu individual', 200)
+    usuario = Usuario.new('nombre','direccion','123456',1)
+    pedido = described_class.new(usuario,menu,EstadoEntregado.new)
+    expect {pedido.calificar(0)}.to raise_error(CalificacionRangoInvalido)
+  end
 end
