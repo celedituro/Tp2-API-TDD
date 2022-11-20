@@ -6,5 +6,7 @@ class RepartidorCreator
   def crear_repartidor(nombre_usuario, nombre)
     repartidor = Repartidor.new(nombre_usuario, nombre)
     @repository.guardar(repartidor)
+  rescue Duplicado
+    raise Duplicado
   end
 end

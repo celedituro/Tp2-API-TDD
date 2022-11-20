@@ -13,3 +13,14 @@ Escenario: Registración exitosa
   Dado que uso el endpoint "/repartidor" con los datos {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como request body
   Cuando registro un repartidor
   Entonces recibo {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como response
+
+Escenario: Registración con campos faltantes con codigo http
+  Dado que uso el endpoint "/repartidor" con los datos {nombre_usuario:"fulanomengano"} como request body
+  Cuando registro un repartidor
+  Entonces recibo un código http "400"
+
+
+Escenario: Registración con campos faltantes
+  Dado que uso el endpoint "/repartidor" con los datos {nombre_usuario:"fulanomengano"} como request body
+  Cuando registro un repartidor
+  Entonces recibo un mensaje de error del tipo "Bad Request"

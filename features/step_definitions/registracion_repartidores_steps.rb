@@ -3,6 +3,11 @@ When(/^que uso el endpoint "([^"]*)" con los datos \{nombre_usuario:"([^"]*)", n
   @request = {nombre_usuario: nombre_usuario, nombre: nombre}.to_json
 end
 
+When(/^que uso el endpoint "([^"]*)" con los datos \{nombre_usuario:"([^"]*)"\} como request body$/) do |comando, nombre_usuario|
+  @comando = comando
+  @request = {nombre_usuario: nombre_usuario}.to_json
+end
+
 When(/^registro un repartidor$/) do
   @response = Faraday.post("#{BASE_URL}#{@comando}", @request, header)
 end
