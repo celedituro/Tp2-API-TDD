@@ -15,6 +15,22 @@ module Persistence
         buscar_dataset_por_id(un_registro.telefono).update(actualizar_changeset(un_registro))
       end
 
+      def existe(id)
+        buscar_por_id(id)
+        true
+      rescue ObjectNotFound
+        false
+      end
+
+      def guardar(un_registro)
+        raise Duplicado if existe(un_registro.id)
+
+        insertar(un_registro)
+        un_registro
+      rescue Duplicado
+        raise Duplicado
+      end
+
       protected
 
       def insertar(un_registro)

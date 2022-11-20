@@ -29,11 +29,16 @@ Entonces(/^recibo un mensaje de error del tipo "([^"]*)"$/) do |mensaje|
 end
 
 Dado(/^que existe un usuario con teléfono "([^"]*)"$/) do |telefono|
-  @request = {nombre: 'Juan', direccion: 'Cucha cucha', telefono: telefono, id: 1}.to_json
+  @request = {nombre: 'Juan', direccion: 'Cucha cucha', telefono: telefono, id: '1'}.to_json
   @response = Faraday.post(crear_usuario_url, @request, header)
 end
 
-Cuando(/^intento el endpoint "([^"]*)" con los datos \{nombre: "([^"]*)", direccion: "([^"]*)", telefono: "([^"]*)", id: "([^"]*)"} como request body$/) do |_comando, nombre, direccion, telefono, id|
-  @request = {nombre: nombre, direccion: direccion, telefono: telefono, id: id}.to_json
+Cuando(/^intento el endpoint "([^"]*)" con los datos \{nombre: "([^"]*)", direccion: "([^"]*)", telefono: "([^"]*)", id: "([^"]*)"} como request body$/) do |_comando, nombre, direccion, _telefono, id|
+  @request = {nombre: nombre, direccion: direccion, telefono: '123-456', id: id}.to_json
+  @response = Faraday.post(crear_usuario_url, @request, header)
+end
+
+Dado(/^que existe un usuario con id_usuario "([^"]*)"$/) do |id_usuario|
+  @request = {nombre: 'Juan', direccion: 'Cucha cucha', telefono: '123-456', id: id_usuario}.to_json
   @response = Faraday.post(crear_usuario_url, @request, header)
 end

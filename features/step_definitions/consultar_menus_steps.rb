@@ -1,5 +1,5 @@
 Dado(/^que soy un usuario registrado$/) do
-  @request = {nombre: 'pepe', direccion: 'pepe direccion', telefono: '123-567', id: 1}.to_json
+  @request = {nombre: 'pepe', direccion: 'pepe direccion', telefono: '123-567', id: '1'}.to_json
   @response = Faraday.post(crear_usuario_url, @request, header)
 end
 

@@ -39,3 +39,15 @@
     Dado que existe un usuario con teléfono "5123-1234"
     Cuando intento el endpoint "/registrar" con los datos {nombre: "Juan", direccion: "Cucha20Cucha", telefono: "5123-1234", id: "1"} como request body
     Entonces recibo un mensaje de error del tipo "Conflict"
+
+  @local
+  Escenario: Registración con id_usuario existente
+    Dado que existe un usuario con id_usuario "1"
+    Cuando intento el endpoint "/registrar" con los datos {nombre: "Juan", direccion: "Cucha20Cucha", telefono: "5123-1234", id: "1"} como request body
+    Entonces recibo un código http "409"
+
+  @local
+  Escenario: Registración con id_usuario existente
+    Dado que existe un usuario con id_usuario "1"
+    Cuando intento el endpoint "/registrar" con los datos {nombre: "Juan", direccion: "Cucha20Cucha", telefono: "5123-1234", id: "1"} como request body
+    Entonces recibo un mensaje de error del tipo "Conflict"
