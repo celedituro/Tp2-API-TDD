@@ -1,5 +1,6 @@
 module WebTemplate
   class App
+    CANTIDAD_PARAMETROS_CALIFICACION = 3
     module PedidoHelper
       def pedido_repository
         Persistence::Repositories::PedidoRepository.new
@@ -35,11 +36,16 @@ module WebTemplate
         {id_pedido: pedido.id, calificacion: pedido.calificacion}.to_json
       end
 
+      def validar_calificacion(parametros_pedido)
+        raise CantidadDeParametrosInvalida if parametros_pedido.length != CANTIDAD_PARAMETROS_CALIFICACION
+      end
+
       private
 
       def atributos_pedido(pedido)
         {nombre_menu: pedido.menu.nombre, id_pedido: pedido.id, estado: pedido.estado, nombre_repartidor: pedido.repartidor.nil? ? 'No asignado' : pedido.repartidor.nombre_usuario}
       end
+
     end
 
     helpers PedidoHelper

@@ -61,6 +61,7 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
 
   patch :update, :map => '/calificacion' do
     begin
+      validar_calificacion(parametros_pedido)
       pedido = pedido_repository.buscar_por_id(parametros_pedido[:id_pedido])
       pedido.calificar(parametros_pedido[:calificacion])
       pedido_repository.actualizar(pedido)
@@ -70,6 +71,9 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
     rescue CalificacionInvalida
       status 401
       {message: 'Unauthorized'}.to_json
+    rescue CantidadDeParametrosInvalida
+      status 400
+      {message: 'Bad Request'}.to_json
     end
   end
 end
