@@ -1,6 +1,6 @@
 class ServicioTiempo
   FACTOR_SIN_LLUVIA = 0
-  FACTOR_CON_LLUVIA = 0.1
+  FACTOR_CON_LLUVIA = 0.01
   def obtener_factor_tiempo(fecha)
     precipitacion = obtener_precipitacion_desde_api(fecha)
     return FACTOR_SIN_LLUVIA if precipitacion.zero?
