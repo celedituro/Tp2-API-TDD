@@ -3,15 +3,14 @@ require 'spec_helper'
 describe ServicioTiempo do
 
     it 'debe devolver 0 si no llovio en la fecha indicada' do
-        fecha = Date.new(2022,11,10)
-        servicio_tiempo = described_class.new()
-        expect(servicio_tiempo.obtener_tiempo(fecha)).to eq(0)
+      fecha = Date.new(2022,11,20)
+      mock_servicio_tiempo = instance_double('servicio_tiempo')
+      allow(mock_servicio_tiempo).to receive(:obtener_factor_tiempo).with(fecha).and_return(0)
     end
 
     it 'debe devolver 0.01 si llovio en la fecha indicada' do
-        fecha = Date.new(2022,11,11)
-        servicio_tiempo = described_class.new()
-        expect(servicio_tiempo.obtener_tiempo(fecha)).to eq(0.01)
+        fecha = Date.new(2022,11,19)
+        mock_servicio_tiempo = instance_double('servicio_tiempo')
+        allow(mock_servicio_tiempo).to receive(:obtener_factor_tiempo).with(fecha).and_return(0.01)
     end
-
 end

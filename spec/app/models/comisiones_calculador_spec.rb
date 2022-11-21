@@ -12,7 +12,7 @@ describe ComisionesCalculador do
         allow(pedido).to receive(:created_on).and_return(created_on)
         allow(pedido).to receive(:menu).and_return(menu)
         allow(menu).to receive(:precio).and_return(100)
-        allow(api_tiempo).to receive(:obtener_tiempo).with(created_on).and_return(0)
+        allow(api_tiempo).to receive(:obtener_factor_tiempo).with(created_on).and_return(0)
 
         comision_calculador = described_class.new(api_tiempo)
         comision = comision_calculador.calcular(pedido)
@@ -29,7 +29,7 @@ describe ComisionesCalculador do
         allow(pedido).to receive(:created_on).and_return(created_on)
         allow(pedido).to receive(:menu).and_return(menu)
         allow(menu).to receive(:precio).and_return(100)
-        allow(api_tiempo).to receive(:obtener_tiempo).with(created_on).and_return(0)
+        allow(api_tiempo).to receive(:obtener_factor_tiempo).with(created_on).and_return(0)
 
         comision_calculador = described_class.new(api_tiempo)
         comision = comision_calculador.calcular(pedido)
@@ -46,7 +46,7 @@ describe ComisionesCalculador do
       allow(pedido).to receive(:created_on).and_return(created_on)
       allow(pedido).to receive(:menu).and_return(menu)
       allow(menu).to receive(:precio).and_return(100)
-      allow(api_tiempo).to receive(:obtener_tiempo).with(created_on).and_return(0)
+      allow(api_tiempo).to receive(:obtener_factor_tiempo).with(created_on).and_return(0)
 
       comision_calculador = described_class.new(api_tiempo)
       comision = comision_calculador.calcular(pedido)
@@ -63,7 +63,7 @@ describe ComisionesCalculador do
       allow(pedido).to receive(:created_on).and_return(created_on)
       allow(pedido).to receive(:menu).and_return(menu)
       allow(menu).to receive(:precio).and_return(100)
-      allow(api_tiempo).to receive(:obtener_tiempo).with(created_on).and_return(0)
+      allow(api_tiempo).to receive(:obtener_factor_tiempo).with(created_on).and_return(0)
 
       comision_calculador = described_class.new(api_tiempo)
       comision = comision_calculador.calcular(pedido)
@@ -80,7 +80,7 @@ describe ComisionesCalculador do
       allow(pedido).to receive(:created_on).and_return(created_on)
       allow(pedido).to receive(:menu).and_return(menu)
       allow(menu).to receive(:precio).and_return(100)
-      allow(api_tiempo).to receive(:obtener_tiempo).with(created_on).and_return(0)
+      allow(api_tiempo).to receive(:obtener_factor_tiempo).with(created_on).and_return(0)
 
       comision_calculador = described_class.new(api_tiempo)
       comision = comision_calculador.calcular(pedido)
@@ -97,7 +97,7 @@ describe ComisionesCalculador do
       allow(pedido).to receive(:created_on).and_return(created_on)
       allow(pedido).to receive(:menu).and_return(menu)
       allow(menu).to receive(:precio).and_return(100)
-      allow(api_tiempo).to receive(:obtener_tiempo).with(created_on).and_return(0.01)
+      allow(api_tiempo).to receive(:obtener_factor_tiempo).with(created_on).and_return(0.01)
 
       comision_calculador = described_class.new(api_tiempo)
       comision = comision_calculador.calcular(pedido)
@@ -114,7 +114,7 @@ describe ComisionesCalculador do
       allow(pedido).to receive(:created_on).and_return(created_on)
       allow(pedido).to receive(:menu).and_return(menu)
       allow(menu).to receive(:precio).and_return(100)
-      allow(api_tiempo).to receive(:obtener_tiempo).with(created_on).and_return(0.01)
+      allow(api_tiempo).to receive(:obtener_factor_tiempo).with(created_on).and_return(0.01)
 
       comision_calculador = described_class.new(api_tiempo)
       comision = comision_calculador.calcular(pedido)
@@ -131,7 +131,7 @@ describe ComisionesCalculador do
       allow(pedido).to receive(:created_on).and_return(created_on)
       allow(pedido).to receive(:menu).and_return(menu)
       allow(menu).to receive(:precio).and_return(100)
-      allow(api_tiempo).to receive(:obtener_tiempo).with(created_on).and_return(0.01)
+      allow(api_tiempo).to receive(:obtener_factor_tiempo).with(created_on).and_return(0.01)
 
       comision_calculador = described_class.new(api_tiempo)
       comision = comision_calculador.calcular(pedido)
@@ -148,7 +148,7 @@ describe ComisionesCalculador do
       allow(pedido).to receive(:created_on).and_return(created_on)
       allow(pedido).to receive(:menu).and_return(menu)
       allow(menu).to receive(:precio).and_return(175)
-      allow(api_tiempo).to receive(:obtener_tiempo).with(created_on).and_return(0)
+      allow(api_tiempo).to receive(:obtener_factor_tiempo).with(created_on).and_return(0)
 
       comision_calculador = described_class.new(api_tiempo)
       comision = comision_calculador.calcular(pedido)
