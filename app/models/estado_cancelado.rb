@@ -9,7 +9,12 @@ class EstadoCancelado
     'cancelado'
   end
 
-  # TO-DO lanzar excepcion
+  # TODO: lanzar excepcion
+  def cancelar
+    EstadoCancelado.new
+  end
+
+  # TODO: lanzar excepcion
   def actualizar(_pedido)
     EstadoCancelado.new
   end
