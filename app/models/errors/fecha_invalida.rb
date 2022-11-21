@@ -1,0 +1,2 @@
+class FechaInvalida < StandardError
+end
