@@ -1,3 +1,4 @@
+require 'faraday'
 class ServicioTiempo
   FACTOR_SIN_LLUVIA = 0
   FACTOR_CON_LLUVIA = 0.01
