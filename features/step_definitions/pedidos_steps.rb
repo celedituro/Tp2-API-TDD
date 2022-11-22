@@ -22,23 +22,23 @@ Entonces(/^recibo con nombre_menu: "([^"]*)"$/) do |nombre_menu|
 end
 
 Dado(/^que el estado del pedido es "([^"]*)"$/) do |estado|
-  @response = Faraday.get("#{BASE_URL}/pedido/#{@pedido_id}")
+  @response = Faraday.get("#{BASE_URL}/pedidos/#{@pedido_id}")
   datos_response = JSON.parse(@response.body)
   expect(datos_response['estado']).to eq(estado)
 end
 
 Dado(/^creo un pedido con menu individual$/) do
   @request = {id_usuario: '1', id_menu: 1}.to_json
-  @response = Faraday.post("#{BASE_URL}/pedido", @request, header)
+  @response = Faraday.post("#{BASE_URL}/pedidos", @request, header)
   @pedido_id = JSON.parse(@response.body)['id_pedido']
 end
 
 Cuando(/^cambio el estado del pedido$/) do
-  @response = Faraday.patch("#{BASE_URL}/pedido?id=#{@pedido_id}")
+  @response = Faraday.patch("#{BASE_URL}/pedidos?id=#{@pedido_id}")
 end
 
 Cuando(/^pregunto por el estado del pedido$/) do
-  @response = Faraday.get("#{BASE_URL}/pedido/#{@pedido_id}")
+  @response = Faraday.get("#{BASE_URL}/pedidos/#{@pedido_id}")
 end
 
 Entonces(/^el estado es "([^"]*)"$/) do |estado|
@@ -73,7 +73,7 @@ end
 
 Cuando(/^creo un pedido con menu familiar$/) do
   @request = {id_usuario: '1', id_menu: 3}.to_json
-  @response = Faraday.post("#{BASE_URL}/pedido", @request, header)
+  @response = Faraday.post("#{BASE_URL}/pedidos", @request, header)
   @pedido_id = JSON.parse(@response.body)['id_pedido']
 end
 

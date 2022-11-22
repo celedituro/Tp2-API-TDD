@@ -6,7 +6,7 @@ Quiero asignar pedidos a repartidores
 
 Antecedentes:
   Dado que soy un usuario registrado
-  Y que uso el endpoint "/repartidor" con los datos {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como request body
+  Y que uso el endpoint "/repartidores" con los datos {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como request body
   Y registro un repartidor
   Y creo un pedido con menu individual
   Y el estado es "recibido"

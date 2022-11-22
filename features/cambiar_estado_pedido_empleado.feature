@@ -15,7 +15,7 @@ Escenario: El pedido pasa de recibido a en preparación
   Entonces el estado es "en preparación"
 
 Escenario: El pedido pasa en preparación a en camino
-  Dado que uso el endpoint "/repartidor" con los datos {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como request body
+  Dado que uso el endpoint "/repartidores" con los datos {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como request body
   Y registro un repartidor
   Y que el estado del pedido es "recibido"
   Y cambio el estado del pedido
@@ -37,7 +37,7 @@ Escenario: El pedido pasa en espera a en camino
   Y que el estado del pedido es "en preparación"
   Y cambio el estado del pedido
   Y que el estado del pedido es "en espera"
-  Y que uso el endpoint "/repartidor" con los datos {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como request body
+  Y que uso el endpoint "/repartidores" con los datos {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como request body
   Y registro un repartidor
   Cuando cambio el estado del pedido
   Entonces el estado es "en camino"

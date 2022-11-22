@@ -1,5 +1,5 @@
 WebTemplate::App.controllers :pedidos, :provides => [:json] do
-  post :create, :map => '/pedido' do
+  post :create, :map => '/pedidos' do
     begin
       pedido = PedidoCreator.new(pedido_repository, usuario_repository, menus_repository).crear_pedido(parametros_pedido[:id_usuario], parametros_pedido[:id_menu])
       status 201
@@ -13,7 +13,7 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
     end
   end
 
-  get :index, :map => '/pedido', :with => :id do
+  get :index, :map => '/pedidos', :with => :id do
     begin
       pedido = pedido_repository.buscar_por_id(params[:id])
       status 200
@@ -24,7 +24,7 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
     end
   end
 
-  get :pedidos, :map => '/pedidos', :with => :id do
+  get :pedidos, :map => '/todos', :with => :id do
     begin
       pedidos = pedido_repository.buscar_pedidos_de(params[:id])
       status 200
@@ -34,7 +34,7 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
     end
   end
 
-  patch :update, :map => '/pedido' do
+  patch :update, :map => '/pedidos' do
     begin
       pedido = pedido_repository.buscar_por_id(params[:id])
       pedido.actualizar
@@ -50,7 +50,7 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
     end
   end
 
-  patch :update, :map => '/cancelacion' do
+  patch :update, :map => '/cancelaciones' do
     begin
       pedido = pedido_repository.buscar_por_id(params[:id])
       pedido.cancelar
@@ -64,7 +64,7 @@ WebTemplate::App.controllers :pedidos, :provides => [:json] do
     end
   end
 
-  patch :update, :map => '/calificacion' do
+  patch :update, :map => '/calificaciones' do
     begin
       validar_calificacion(parametros_pedido)
       pedido = pedido_repository.buscar_por_id(parametros_pedido[:id_pedido])

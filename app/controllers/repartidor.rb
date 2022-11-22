@@ -1,5 +1,5 @@
 WebTemplate::App.controllers :users, :provides => [:json] do
-  post :create, :map => '/repartidor' do
+  post :create, :map => '/repartidores' do
     begin
       repartidor = RepartidorCreator.new(repartidor_repository).crear_repartidor(parametros_repartidor[:nombre_usuario], parametros_repartidor[:nombre])
       status 201

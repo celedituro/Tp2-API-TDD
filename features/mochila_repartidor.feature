@@ -5,7 +5,7 @@ Como repartidor
 Quiero tener una capacidad máxima para llevar pedidos
 
   Antecedentes:
-    Dado que uso el endpoint "/repartidor" con los datos {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como request body
+    Dado que uso el endpoint "/repartidores" con los datos {nombre_usuario:"fulanomengano", nombre: "Fulano Mengano"} como request body
     Y registro un repartidor
     Y la capacidad de la mochila es 6 para "fulanomengano"
     Y que soy un usuario registrado

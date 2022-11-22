@@ -32,7 +32,7 @@ def crear_usuario_url
 end
 
 def crear_repartidor_url
-  "#{BASE_URL}/repartidor"
+  "#{BASE_URL}/repartidores"
 end
 
 After do |_scenario|
